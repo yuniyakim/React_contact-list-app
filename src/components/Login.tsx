@@ -1,5 +1,11 @@
 import React, {useState} from 'react';
-import { Form, Button } from "react-bootstrap";
+import {
+  StyledFormContainer as FormContainer,
+  StyledForm as Form,
+  StyledTitle as Title,
+  StyledFormControl as FormControl,
+  StyledButton as Button
+} from './Login.style';
 
 interface LoginFormState {
   email: string;
@@ -27,24 +33,18 @@ const Login = () => {
   }
 
   return (
-    <div>
+    <FormContainer>
       <Form>
-        <div>
+        <Title>
           Sign in
-        </div>
-        <Form.Group controlId="email">
-          <Form.Label>Email</Form.Label>
-          <Form.Control type="email" placeholder="Email" onChange={handleTextFieldChange} />
-        </Form.Group>
-        <Form.Group controlId="password">
-          <Form.Label>Password</Form.Label>
-          <Form.Control type="password" placeholder="Password" onChange={handleTextFieldChange} />
-        </Form.Group>
+        </Title>
+        <FormControl type="email" placeholder="Email" onChange={handleTextFieldChange} />
+        <FormControl type="password" placeholder="Password" onChange={handleTextFieldChange} />
         <Button onClick={handleSubmit}>
-          Sign In
+          Sign in
         </Button>
       </Form>
-    </div>
+    </FormContainer>
   );
 };
 
