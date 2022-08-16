@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import * as palette from '../theme/palette';
-import {Button} from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
 
 export const StyledHeaderContainer = styled.div`
   font-family: 'Open Sans', sans-serif;

@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import {Button, Form} from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
 import * as palette from '../theme/palette';
 
 export const StyledFormContainer = styled.div`
