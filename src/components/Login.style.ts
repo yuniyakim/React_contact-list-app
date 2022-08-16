@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import * as palette from '../theme/palette';
+import {StyledFormControl as FormControl} from "../UI/FormControl.style";
+import {StyledButton as Button} from "../UI/Button.style";
 
 export const StyledFormContainer = styled.div`
   display: flex;
@@ -28,29 +28,12 @@ export const StyledTitle = styled.div`
   margin: 3%;
 `
 
-export const StyledFormControl = styled(Form.Control)`
-  font-family: 'Open Sans', sans-serif;
-  padding-left: 1em;
-  padding-right: 1em;
-  height: 3em;
+export const StyledFormControl = styled(FormControl)`
   width: 100%;
-  border: solid 1px ${palette.colors.border};
-  border-radius: 5px;
   margin: 3%;
 `
 
 export const StyledButton = styled(Button)`
-  font-family: 'Open Sans', sans-serif;
-  height: 3em;
-  width: 100%;
-  border: solid 1px ${palette.colors.border};
-  border-radius: 20px;
-  background-color: ${palette.colors.primary};
-  color: ${palette.colors.text};
+  width: calc(100% + 2em);
   margin: 3%;
-  cursor: pointer;
-  
-  :hover {
-    background-color: ${palette.colors.primaryDark};
-  }
 `

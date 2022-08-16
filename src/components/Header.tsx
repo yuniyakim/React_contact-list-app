@@ -7,14 +7,12 @@ import {
 
 const Header = () => {
   return (
-    <nav>
-      <HeaderContainer>
-        <Title>Contacts list</Title>
-        <Button>
-          Log Out
-        </Button>
-      </HeaderContainer>
-    </nav>
+    <HeaderContainer>
+      <Title>Contacts list</Title>
+      <Button>
+        Log Out
+      </Button>
+    </HeaderContainer>
   );
 };
 
