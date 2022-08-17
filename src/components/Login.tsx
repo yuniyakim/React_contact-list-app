@@ -6,19 +6,15 @@ import {
   StyledFormControl as FormControl,
   StyledButton as Button
 } from './Login.style';
+import {User} from "../types/auth";
 
-interface LoginFormState {
-  email: string;
-  password: string;
-}
-
-const initialState: LoginFormState = {
+const initialState: User = {
   email: '',
   password: '',
 }
 
-const Login = () => {
-  const [formValues, setFormValues] = useState<LoginFormState>(initialState);
+const Login = (props: {onSubmit: (values: User) => void}) => {
+  const [formValues, setFormValues] = useState<User>(initialState);
 
   const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { type, value } = event.target;
@@ -28,10 +24,6 @@ const Login = () => {
     });
   };
 
-  const handleSubmit = () => {
-    console.log(formValues);
-  }
-
   return (
     <FormContainer>
       <Form>
@@ -40,7 +32,7 @@ const Login = () => {
         </Title>
         <FormControl type="email" placeholder="Email" onChange={handleTextFieldChange} />
         <FormControl type="password" placeholder="Password" onChange={handleTextFieldChange} />
-        <Button onClick={handleSubmit}>
+        <Button onClick={() => props.onSubmit(formValues)}>
           Sign in
         </Button>
       </Form>
