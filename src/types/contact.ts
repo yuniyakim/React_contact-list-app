@@ -2,6 +2,7 @@ export interface Contact {
   id: number;
   surname: string;
   name: string;
+  userId: number;
 }
 
 export interface ContactState {
