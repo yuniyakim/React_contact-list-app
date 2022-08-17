@@ -7,7 +7,7 @@ export const login = (email: string, password: string) => {
   return async (dispatch: Dispatch<AuthAction>) => {
     try {
       dispatch({type: AuthActionTypes.LOGIN});
-      await axios.get(url + '/auth/login', {
+      await axios.get(`${url}/auth/login`, {
         params: {_email: email, _password: password},
       });
       dispatch({
@@ -27,7 +27,7 @@ export const logout = () => {
   return async (dispatch: Dispatch<AuthAction>) => {
     try {
       dispatch({type: AuthActionTypes.LOGOUT});
-      await axios.get(url + '/auth/logout');
+      await axios.get(`${url}/auth/logout`);
       dispatch({
         type: AuthActionTypes.LOGOUT_SUCCESS,
       });
