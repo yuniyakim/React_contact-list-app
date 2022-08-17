@@ -1,33 +1,17 @@
-import React from 'react';
-import {Contact as ContactType} from "../types/contact";
+import React, {useEffect} from 'react';
 import Header from "../components/Header";
 import Toolbar from "../components/Toolbar";
 import Contacts from "../components/Contacts";
-
-const contacts: ContactType[] = [
-  {
-    id: 1,
-    surname: 'Ivanov',
-    name: 'Ivan'
-  },
-  {
-    id: 2,
-    surname: 'Petrov',
-    name: 'Petr'
-  },
-  {
-    id: 3,
-    surname: 'Sidorov',
-    name: 'Sergey'
-  },
-  {
-    id: 4,
-    surname: 'Green',
-    name: 'John'
-  },
-]
+import {useAppActions, useAppSelector} from "../hooks";
 
 const ContactsPage = () => {
+  const {contacts, error, loading} = useAppSelector(state => state.contact);
+  const {fetchContacts} = useAppActions();
+
+  useEffect(() => {
+    fetchContacts()
+  }, []);
+
   return (
     <div>
       <Header />
