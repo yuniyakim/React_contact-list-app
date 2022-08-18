@@ -6,10 +6,11 @@ import {useAppActions, useAppSelector} from "../hooks";
 
 const ContactsPage = () => {
   const {contacts, error, loading} = useAppSelector(state => state.contact);
+  const {userId, token} = useAppSelector(state => state.auth);
   const {fetchContacts} = useAppActions();
 
   useEffect(() => {
-    fetchContacts()
+    fetchContacts(userId, token);
   }, []);
 
   return (

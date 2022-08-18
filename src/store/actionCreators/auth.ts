@@ -1,23 +1,28 @@
-import {AuthAction, AuthActionTypes} from "../../types/auth";
+import {AuthAction, AuthActionTypes, AuthResponse, User} from "../../types/auth";
 import {Dispatch} from "@reduxjs/toolkit";
 import axios, {AxiosError} from "axios";
 import {url} from "./url";
 
-export const login = (email: string, password: string) => {
+export const login = (formValues: User) => {
   return async (dispatch: Dispatch<AuthAction>) => {
     try {
       dispatch({type: AuthActionTypes.LOGIN});
-      await axios.get(`${url}/auth/login`, {
-        params: {_email: email, _password: password},
-      });
+      const res = (await axios.post(`${url}/login`, JSON.stringify(formValues), {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      })).data as AuthResponse;
       dispatch({
         type: AuthActionTypes.LOGIN_SUCCESS,
-        payload: {email, password},
+        payload: {
+          userId: res.user.id,
+          token: res.accessToken,
+        }
       });
     } catch (e) {
       dispatch({
         type: AuthActionTypes.LOGIN_ERROR,
-        payload: (e as AxiosError).response?.status === 401 ? 'Wrong email or password' : 'Error occurred while logging in',
+        payload: (e as AxiosError).response!.data as string,
       });
     }
   }
@@ -27,7 +32,7 @@ export const logout = () => {
   return async (dispatch: Dispatch<AuthAction>) => {
     try {
       dispatch({type: AuthActionTypes.LOGOUT});
-      await axios.get(`${url}/auth/logout`);
+      // logging out here
       dispatch({
         type: AuthActionTypes.LOGOUT_SUCCESS,
       });

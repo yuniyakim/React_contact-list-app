@@ -1,16 +1,20 @@
-import {ContactAction, ContactActionTypes} from "../../types/contact";
+import {Contact, ContactAction, ContactActionTypes} from "../../types/contact";
 import {Dispatch} from "@reduxjs/toolkit";
 import axios from "axios";
 import {url} from "./url";
 
-export const fetchContacts = () => {
+export const fetchContacts = (userId: number | null, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.FETCH_CONTACTS});
-      const response = await axios.get(`${url}/contacts`);
+      const response = await axios.get(`${url}/user/${userId}/contacts`, {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      });
       dispatch({
         type: ContactActionTypes.FETCH_CONTACTS_SUCCESS,
-        payload: response.data,
+        payload: (response.data as Contact[]),
       });
     } catch (e) {
       dispatch({
