@@ -14,13 +14,13 @@ export const authReducer = (state = initialState, action: AuthAction): AuthState
       return {...state, loading: true};
     }
     case AuthActionTypes.LOGIN_SUCCESS: {
-      return {...state, loading: false, userId: action.payload.userId, token: action.payload.token};
+      return {...state, loading: false, userId: action.payload.userId, token: action.payload.token, error: null};
     }
     case AuthActionTypes.LOGIN_ERROR: {
       return {...state, loading: false, error: action.payload};
     }
     case AuthActionTypes.LOGOUT_SUCCESS: {
-      return {...state, loading: false, userId: null, token: null };
+      return {...state, loading: false, userId: null, token: null, error: null };
     }
     case AuthActionTypes.LOGOUT_ERROR: {
       return {...state, loading: false, error: action.payload};

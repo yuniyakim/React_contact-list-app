@@ -15,14 +15,14 @@ const LoginPage = () => {
         return navigate('/contacts');
       }
     }
-  }, [loading])
+  }, [loading]);
 
   const handleSubmit = (formValues: User) => {
     login(formValues);
   }
 
   return (
-    <Login onSubmit={handleSubmit} />
+    <Login onSubmit={handleSubmit} error={error} />
   );
 };
 
