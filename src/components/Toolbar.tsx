@@ -7,10 +7,10 @@ import {
   StyledButton as Button
 } from './Toolbar.style';
 
-const Toolbar = () => {
+const Toolbar = (props: {buttonLabel: string, onButtonClick: () => void}) => {
   return (
     <ToolbarContainer>
-      <Button>Add contact</Button>
+      <Button onClick={() => props.onButtonClick()}>{props.buttonLabel}</Button>
       <Form>
         <FormControl type="search" placeholder="Search" />
         <SearchButton>Search</SearchButton>

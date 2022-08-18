@@ -5,11 +5,11 @@ import {
   StyledButton as Button
 } from './Header.style';
 
-const Header = () => {
+const Header = (props: {pageTitle: string, onLogout: () => void}) => {
   return (
     <HeaderContainer>
-      <Title>Contacts list</Title>
-      <Button>
+      <Title>{props.pageTitle}</Title>
+      <Button onClick={() => props.onLogout()}>
         Log Out
       </Button>
     </HeaderContainer>
