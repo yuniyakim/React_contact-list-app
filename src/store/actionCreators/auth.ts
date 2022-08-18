@@ -39,7 +39,7 @@ export const logout = () => {
     } catch (e) {
       dispatch({
         type: AuthActionTypes.LOGOUT_ERROR,
-        payload: 'Error occurred while logging out',
+        payload: (e as AxiosError).response!.data as string,
       });
     }
   }

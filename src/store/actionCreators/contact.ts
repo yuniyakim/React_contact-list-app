@@ -1,6 +1,6 @@
 import {Contact, ContactAction, ContactActionTypes} from "../../types/contact";
 import {Dispatch} from "@reduxjs/toolkit";
-import axios from "axios";
+import axios, {AxiosError} from "axios";
 import {url} from "./url";
 
 export const fetchContacts = (userId: number | null, token: string | null) => {
@@ -19,7 +19,7 @@ export const fetchContacts = (userId: number | null, token: string | null) => {
     } catch (e) {
       dispatch({
         type: ContactActionTypes.FETCH_CONTACTS_ERROR,
-        payload: 'Error occurred while contacts fetching',
+        payload: (e as AxiosError).response!.data as string,
       });
     }
   }
@@ -39,7 +39,7 @@ export const addContact = (surname: string, name: string) => {
     } catch (e) {
       dispatch({
         type: ContactActionTypes.ADD_CONTACT_ERROR,
-        payload: 'Error occurred while contact adding',
+        payload: (e as AxiosError).response!.data as string,
       });
     }
   }
@@ -59,7 +59,7 @@ export const editContact = (id: number, surname: string, name: string) => {
     } catch (e) {
       dispatch({
         type: ContactActionTypes.EDIT_CONTACT_ERROR,
-        payload: 'Error occurred while contact editing',
+        payload: (e as AxiosError).response!.data as string,
       });
     }
   }
@@ -79,7 +79,7 @@ export const deleteContact = (id: number) => {
     } catch (e) {
       dispatch({
         type: ContactActionTypes.DELETE_CONTACT_ERROR,
-        payload: 'Error occurred while contact deleting',
+        payload: (e as AxiosError).response!.data as string,
       });
     }
   }
