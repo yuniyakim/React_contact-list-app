@@ -1,13 +1,10 @@
 import {AuthAction, AuthActionTypes, AuthState} from "../../types/auth";
 
 const initialState: AuthState = {
-  isAuthenticated: false,
+  userId: null,
+  token: null,
   loading: false,
-  error: null,
-  user: {
-    email: null,
-    password: null
-  }
+  error: null
 }
 
 export const authReducer = (state = initialState, action: AuthAction): AuthState => {
@@ -17,13 +14,13 @@ export const authReducer = (state = initialState, action: AuthAction): AuthState
       return {...state, loading: true};
     }
     case AuthActionTypes.LOGIN_SUCCESS: {
-      return {...state, loading: false, user: action.payload};
+      return {...state, loading: false, userId: action.payload.userId, token: action.payload.token};
     }
     case AuthActionTypes.LOGIN_ERROR: {
       return {...state, loading: false, error: action.payload};
     }
     case AuthActionTypes.LOGOUT_SUCCESS: {
-      return {...state, loading: false, user: { email: null, password: null }};
+      return {...state, loading: false, userId: null, token: null };
     }
     case AuthActionTypes.LOGOUT_ERROR: {
       return {...state, loading: false, error: action.payload};

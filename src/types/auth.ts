@@ -4,10 +4,10 @@ export interface User {
 }
 
 export interface AuthState {
-  isAuthenticated: boolean;
+  userId: number | null;
+  token: string | null;
   loading: boolean;
   error: null | string;
-  user: User;
 }
 
 export enum AuthActionTypes {
@@ -25,7 +25,7 @@ interface LoginAction {
 
 interface LoginSuccessAction {
   type: AuthActionTypes.LOGIN_SUCCESS;
-  payload: User;
+  payload: { userId: number, token: string };
 }
 
 interface LoginErrorAction {
@@ -53,3 +53,11 @@ export type AuthAction =
   | LogoutAction
   | LogoutSuccessAction
   | LogoutErrorAction;
+
+export interface AuthResponse {
+  accessToken: string,
+  user: {
+    id: number,
+    email: string
+  }
+}
