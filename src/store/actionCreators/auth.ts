@@ -12,13 +12,15 @@ export const login = (formValues: User) => {
           'Content-Type': 'application/json',
         }
       })).data as AuthResponse;
-      dispatch({
-        type: AuthActionTypes.LOGIN_SUCCESS,
-        payload: {
-          userId: res.user.id,
-          token: res.accessToken,
-        }
-      });
+      setTimeout(() => {
+        dispatch({
+          type: AuthActionTypes.LOGIN_SUCCESS,
+          payload: {
+            userId: res.user.id,
+            token: res.accessToken,
+          }
+        });
+      }, 1000);
     } catch (e) {
       dispatch({
         type: AuthActionTypes.LOGIN_ERROR,
