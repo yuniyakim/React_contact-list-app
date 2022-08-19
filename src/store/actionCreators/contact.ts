@@ -25,16 +25,18 @@ export const fetchContacts = (userId: number | null, token: string | null) => {
   }
 }
 
-export const addContact = (surname: string, name: string) => {
+export const addContact = (surname: string, name: string, userId: number) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.ADD_CONTACT});
-      const response = await axios.post(`${url}/contacts`, {
-        params: {_surname: surname, _name: name},
+      const response = await axios.post(`${url}/contacts`, JSON.stringify({surname, name, userId}), {
+        headers: {
+          'Content-Type': 'application/json',
+        }
       });
       dispatch({
         type: ContactActionTypes.ADD_CONTACT_SUCCESS,
-        payload: response.data,
+        payload: response.data as Contact,
       })
     } catch (e) {
       dispatch({

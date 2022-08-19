@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 const ContactsPage = () => {
   const {contacts, error, loading} = useAppSelector(state => state.contact);
   const {userId, token} = useAppSelector(state => state.auth);
-  const {fetchContacts, logout} = useAppActions();
+  const {fetchContacts, addContact, logout} = useAppActions();
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -27,10 +27,16 @@ const ContactsPage = () => {
     logout();
   }
 
+  const handleAddContact = (surname: string, name: string) => {
+    if (userId !== null) {
+      addContact(surname, name, userId);
+    }
+  }
+
   return (
     <div>
       <Header pageTitle="Contacts list" onLogout={handleLogout} />
-      <Toolbar onAddContact={() => {}} />
+      <Toolbar onAddContact={handleAddContact} />
       <Contacts contacts={contacts} />
     </div>
   );

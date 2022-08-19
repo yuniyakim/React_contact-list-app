@@ -16,14 +16,13 @@ const initialState = {
   name: '',
 }
 
-const Toolbar = (props: {onAddContact: () => void}) => {
+const Toolbar = (props: {onAddContact: (surname: string, name: string) => void}) => {
   const [show, setShow] = useState(false);
   const [formValues, setFormValues] = useState(initialState);
 
   const handleClose = () => setShow(false);
   const handleSubmit = () => {
-    props.onAddContact();
-    console.log(formValues)
+    props.onAddContact(formValues.surname, formValues.name);
     setShow(false);
   }
 
