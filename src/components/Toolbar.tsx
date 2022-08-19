@@ -57,7 +57,7 @@ const Toolbar = (props: {onAddContact: () => void}) => {
           </Form>
         </ModalBody>
         <Modal.Footer>
-          <Button danger onClick={handleClose}>
+          <Button $danger onClick={handleClose}>
             Cancel
           </Button>
           <Button onClick={handleSubmit}>

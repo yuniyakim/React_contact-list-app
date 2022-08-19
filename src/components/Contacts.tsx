@@ -17,8 +17,8 @@ const Contacts = (props: {contacts: ContactType[]}) => {
         <Contact key={contact.id}>
           <ContactText>{contact.surname} {contact.name}</ContactText>
           <ContactButtonsContainer>
-            <ContactEditButton warning><i className="bi bi-pencil"></i></ContactEditButton>
-            <ContactDeleteButton danger><i className="bi bi-trash"></i></ContactDeleteButton>
+            <ContactEditButton $warning><i className="bi-pencil"></i></ContactEditButton>
+            <ContactDeleteButton $danger><i className="bi-trash"></i></ContactDeleteButton>
           </ContactButtonsContainer>
         </Contact>
       )}
