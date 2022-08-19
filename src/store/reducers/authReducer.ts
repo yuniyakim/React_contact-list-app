@@ -11,16 +11,16 @@ export const authReducer = (state = initialState, action: AuthAction): AuthState
   switch (action.type) {
     case AuthActionTypes.LOGIN:
     case AuthActionTypes.LOGOUT: {
-      return {...state, loading: true};
+      return {...state, loading: true, error: null};
     }
     case AuthActionTypes.LOGIN_SUCCESS: {
-      return {...state, loading: false, userId: action.payload.userId, token: action.payload.token, error: null};
+      return {...state, loading: false, userId: action.payload.userId, token: action.payload.token};
     }
     case AuthActionTypes.LOGIN_ERROR: {
       return {...state, loading: false, error: action.payload};
     }
     case AuthActionTypes.LOGOUT_SUCCESS: {
-      return {...state, loading: false, userId: null, token: null, error: null };
+      return {...state, loading: false, userId: null, token: null};
     }
     case AuthActionTypes.LOGOUT_ERROR: {
       return {...state, loading: false, error: action.payload};

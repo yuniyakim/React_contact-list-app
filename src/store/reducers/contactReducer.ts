@@ -9,7 +9,7 @@ const initialState: ContactState = {
 export const contactReducer = (state = initialState, action: ContactAction): ContactState => {
   switch (action.type) {
     case ContactActionTypes.FETCH_CONTACTS: {
-      return {...state, loading: true};
+      return {...state, loading: true, error: null};
     }
     case ContactActionTypes.FETCH_CONTACTS_SUCCESS: {
       return {...state, loading: false, contacts: action.payload};
@@ -18,7 +18,7 @@ export const contactReducer = (state = initialState, action: ContactAction): Con
       return {...state, loading: false, error: action.payload};
     }
     case ContactActionTypes.ADD_CONTACT: {
-      return {...state, loading: true};
+      return {...state, loading: true, error: null};
     }
     case ContactActionTypes.ADD_CONTACT_SUCCESS: {
       return {...state, loading: false, contacts: [...state.contacts, action.payload]};
@@ -27,7 +27,7 @@ export const contactReducer = (state = initialState, action: ContactAction): Con
       return {...state, loading: false, error: action.payload};
     }
     case ContactActionTypes.EDIT_CONTACT: {
-      return {...state, loading: true};
+      return {...state, loading: true, error: null};
     }
     case ContactActionTypes.EDIT_CONTACT_SUCCESS: {
       return {...state, loading: false, contacts: state.contacts.map(contact => contact.id === action.payload.id ? action.payload : contact)};
@@ -36,7 +36,7 @@ export const contactReducer = (state = initialState, action: ContactAction): Con
       return {...state, loading: false, error: action.payload};
     }
     case ContactActionTypes.DELETE_CONTACT: {
-      return {...state, loading: true};
+      return {...state, loading: true, error: null};
     }
     case ContactActionTypes.DELETE_CONTACT_SUCCESS: {
       return {...state, loading: false, contacts: state.contacts.filter(contact => contact.id !== action.payload)};
