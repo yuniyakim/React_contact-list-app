@@ -1,21 +1,71 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {
   StyledToolbarContainer as ToolbarContainer,
-  StyledForm as Form,
-  StyledFormControl as FormControl,
+  StyledSearchForm as SearchForm,
+  StyledSearchFormControl as SearchFormControl,
   StyledSearchButton as SearchButton,
-  StyledButton as Button
+  StyledButton as Button,
+  StyledModalBody as ModalBody,
+  StyledForm as Form,
+  StyledFormControl as FormControl
 } from './Toolbar.style';
+import Modal from 'react-bootstrap/Modal';
 
-const Toolbar = (props: {buttonLabel: string, onButtonClick: () => void}) => {
+const initialState = {
+  surname: '',
+  name: '',
+}
+
+const Toolbar = (props: {onAddContact: () => void}) => {
+  const [show, setShow] = useState(false);
+  const [formValues, setFormValues] = useState(initialState);
+
+  const handleClose = () => setShow(false);
+  const handleSubmit = () => {
+    props.onAddContact();
+    console.log(formValues)
+    setShow(false);
+  }
+
+  const handleClick = () => setShow(true);
+
+  const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = event.target;
+    setFormValues({
+      ...formValues,
+      [id]: value,
+    });
+  };
+
   return (
-    <ToolbarContainer>
-      <Button onClick={() => props.onButtonClick()}>{props.buttonLabel}</Button>
-      <Form>
-        <FormControl type="search" placeholder="Search" />
-        <SearchButton>Search</SearchButton>
-      </Form>
-    </ToolbarContainer>
+    <>
+      <ToolbarContainer>
+        <Button onClick={() => handleClick()}>Add contact</Button>
+        <SearchForm>
+          <SearchFormControl type="search" placeholder="Search" />
+          <SearchButton>Search</SearchButton>
+        </SearchForm>
+      </ToolbarContainer>
+      <Modal show={show} onHide={handleClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Add contact</Modal.Title>
+        </Modal.Header>
+        <ModalBody>
+          <Form>
+            <FormControl type="text" id="surname" placeholder="Surname" onChange={handleTextFieldChange} />
+            <FormControl type="text" id="name" placeholder="Name" onChange={handleTextFieldChange} />
+          </Form>
+        </ModalBody>
+        <Modal.Footer>
+          <Button danger onClick={handleClose}>
+            Cancel
+          </Button>
+          <Button onClick={handleSubmit}>
+            Add
+          </Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 

@@ -30,7 +30,7 @@ const ContactsPage = () => {
   return (
     <div>
       <Header pageTitle="Contacts list" onLogout={handleLogout} />
-      <Toolbar buttonLabel="Add contact" onButtonClick={() => {}} />
+      <Toolbar onAddContact={() => {}} />
       <Contacts contacts={contacts} />
     </div>
   );
