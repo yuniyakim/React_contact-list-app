@@ -71,12 +71,14 @@ export const deleteContact = (id: number) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.DELETE_CONTACT});
-      const response = await axios.delete(`${url}/contacts`, {
-        params: {_id: id},
+      await axios.delete(`${url}/contacts/${id}`, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
       });
       dispatch({
         type: ContactActionTypes.DELETE_CONTACT_SUCCESS,
-        payload: response.data,
+        payload: id,
       })
     } catch (e) {
       dispatch({

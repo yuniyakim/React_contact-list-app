@@ -10,7 +10,16 @@ import {
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {Contact as ContactType} from '../types/contact';
 
-const Contacts = (props: {contacts: ContactType[]}) => {
+const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, surname: string, name: string) => void,
+  onDeleteContact: (id: number) => void}) => {
+  const handleEdit = () => {
+
+  }
+
+  const handleDelete = (id: number) => {
+    props.onDeleteContact(id);
+  }
+
   return (
     <ContactsContainer>
       {props.contacts.map(contact =>
@@ -18,7 +27,7 @@ const Contacts = (props: {contacts: ContactType[]}) => {
           <ContactText>{contact.surname} {contact.name}</ContactText>
           <ContactButtonsContainer>
             <ContactEditButton warning><i className="bi bi-pencil"></i></ContactEditButton>
-            <ContactDeleteButton danger><i className="bi bi-trash"></i></ContactDeleteButton>
+            <ContactDeleteButton danger onClick={() => handleDelete(contact.id)}><i className="bi bi-trash"></i></ContactDeleteButton>
           </ContactButtonsContainer>
         </Contact>
       )}

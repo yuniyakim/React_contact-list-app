@@ -8,7 +8,7 @@ import {useNavigate} from "react-router-dom";
 const ContactsPage = () => {
   const {contacts, error, loading} = useAppSelector(state => state.contact);
   const {userId, token} = useAppSelector(state => state.auth);
-  const {fetchContacts, addContact, logout} = useAppActions();
+  const {fetchContacts, addContact, editContact, deleteContact, logout} = useAppActions();
   let navigate = useNavigate();
 
   useEffect(() => {
@@ -33,11 +33,23 @@ const ContactsPage = () => {
     }
   }
 
+  const handleEditContact = (id: number, surname: string, name: string) => {
+    if (userId !== null) {
+      editContact(id, surname, name);
+    }
+  }
+
+  const handleDeleteContact = (id: number) => {
+    if (userId !== null) {
+      deleteContact(id);
+    }
+  }
+
   return (
     <div>
       <Header pageTitle="Contacts list" onLogout={handleLogout} />
       <Toolbar onAddContact={handleAddContact} />
-      <Contacts contacts={contacts} />
+      <Contacts contacts={contacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} />
     </div>
   );
 };
