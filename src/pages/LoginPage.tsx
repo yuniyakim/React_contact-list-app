@@ -22,7 +22,7 @@ const LoginPage = () => {
   }
 
   return (
-    <Login onSubmit={handleSubmit} error={error} />
+    <Login onSubmit={handleSubmit} loading={loading} error={error} />
   );
 };
 

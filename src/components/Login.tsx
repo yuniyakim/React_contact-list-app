@@ -9,13 +9,14 @@ import {
   StyledButton as Button
 } from './Login.style';
 import {User} from "../types/auth";
+import Spinner from 'react-bootstrap/Spinner';
 
 const initialState: User = {
   email: '',
   password: '',
 }
 
-const Login = (props: {onSubmit: (values: User) => void, error: string | null}) => {
+const Login = (props: {onSubmit: (values: User) => void, loading: boolean, error: string | null}) => {
   const [formValues, setFormValues] = useState<User>(initialState);
 
   const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -36,7 +37,7 @@ const Login = (props: {onSubmit: (values: User) => void, error: string | null}) 
         <FormControl type="password" placeholder="Password" onChange={handleTextFieldChange} />
         {props.error !== null ? <ErrorContainer><Error>Error</Error>{props.error}</ErrorContainer> : <></>}
         <Button onClick={() => props.onSubmit(formValues)}>
-          Sign in
+          {props.loading ? <Spinner animation="border" variant="light" /> : 'Sign in'}
         </Button>
       </Form>
     </FormContainer>
