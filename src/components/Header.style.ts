@@ -18,11 +18,5 @@ export const StyledTitle = styled.div`
 `
 
 export const StyledButton = styled(Button)`
-  background-color: ${palette.colors.red};
   margin: 3%;
-  border: none;
-  
-  :hover {
-    background-color: ${palette.colors.redActive};
-  }
 `

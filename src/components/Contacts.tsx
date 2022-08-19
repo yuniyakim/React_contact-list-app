@@ -2,8 +2,10 @@ import React from 'react';
 import {
   StyledContactsContainer as ContactsContainer,
   StyledContact as Contact,
+  StyledContactText as ContactText,
   StyledContactButtonsContainer as ContactButtonsContainer,
-  StyledContactButton as ContactButton
+  StyledContactEditButton as ContactEditButton,
+  StyledContactDeleteButton as ContactDeleteButton
 } from './Contacts.style';
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {Contact as ContactType} from '../types/contact';
@@ -13,10 +15,10 @@ const Contacts = (props: {contacts: ContactType[]}) => {
     <ContactsContainer>
       {props.contacts.map(contact =>
         <Contact key={contact.id}>
-          {contact.surname} {contact.name}
+          <ContactText>{contact.surname} {contact.name}</ContactText>
           <ContactButtonsContainer>
-            <ContactButton><i className="bi bi-pencil"></i></ContactButton>
-            <ContactButton><i className="bi bi-trash"></i></ContactButton>
+            <ContactEditButton warning><i className="bi bi-pencil"></i></ContactEditButton>
+            <ContactDeleteButton danger><i className="bi bi-trash"></i></ContactDeleteButton>
           </ContactButtonsContainer>
         </Contact>
       )}

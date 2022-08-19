@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
-import {StyledFormControl as FormControl} from "../UI/FormControl.style";
 import {StyledButton as Button} from "../UI/Button.style";
 import * as palette from '../theme/palette';
 
@@ -21,18 +20,12 @@ export const StyledForm = styled(Form)`
   padding: 2em;
 `
 
-export const StyledFormControl = styled(FormControl)`
+export const StyledFormControl = styled(Form.Control)`
   width: 250px;
   margin-right: 5px;
 `
 
 export const StyledSearchButton = styled(Button)`
-  border-radius: 5px;
-  background-color: ${palette.colors.secondary};
-
-  :hover {
-    background-color: ${palette.colors.secondaryActive};
-  }
 `
 
 export const StyledButton = styled(Button)`

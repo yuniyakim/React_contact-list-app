@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import ListGroup from 'react-bootstrap/ListGroup';
-import Button from 'react-bootstrap/Button';
+import {StyledButton as Button} from '../UI/Button.style';
 import * as palette from '../theme/palette';
 
 export const StyledContactsContainer = styled(ListGroup)`
@@ -15,8 +15,12 @@ export const StyledContact = styled(ListGroup.Item)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 3em;
+  height: 4em;
   width: 95%;
+`
+
+export const StyledContactText = styled.p`
+  margin: 0;
 `
 
 export const StyledContactButtonsContainer = styled.div`
@@ -25,6 +29,9 @@ export const StyledContactButtonsContainer = styled.div`
   margin: 1em;
 `
 
-export const StyledContactButton = styled(Button)`
-  height: 100%;
+export const StyledContactEditButton = styled(Button)`
+  margin-right: 3%;
+`
+
+export const StyledContactDeleteButton = styled(Button)`
 `

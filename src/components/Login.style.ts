@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
-import {StyledFormControl as FormControl} from "../UI/FormControl.style";
+import Alert from 'react-bootstrap/Alert';
 import {StyledButton as Button} from "../UI/Button.style";
 import * as palette from '../theme/palette';
 
@@ -17,7 +17,7 @@ export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 250px;
+  width: 350px;
   padding: 2em;
   border-radius: 3%;
   box-shadow: rgba(60, 64, 67, 0.3) 0 1px 2px 0, rgba(60, 64, 67, 0.15) 0 2px 6px 2px;
@@ -29,12 +29,13 @@ export const StyledTitle = styled.p`
   margin: 3%;
 `
 
-export const StyledFormControl = styled(FormControl)`
+export const StyledFormControl = styled(Form.Control)`
   width: 100%;
   margin: 3%;
+  height: 3em;
 `
 
-export const StyledErrorContainer = styled.div`
+export const StyledErrorContainer = styled(Alert)`
   display: flex;
   flex-direction: column;
   font-family: 'Open Sans', sans-serif;
@@ -43,9 +44,6 @@ export const StyledErrorContainer = styled.div`
   margin: 3%;
   background-color: ${palette.colors.red};
   color: ${palette.colors.text};
-  padding: 0.5em 1em 0.5em 1em;
-  border: solid 1px ${palette.colors.border};
-  border-radius: 5px;
 `
 
 export const StyledError = styled.p`
@@ -55,6 +53,7 @@ export const StyledError = styled.p`
 `
 
 export const StyledButton = styled(Button)`
-  width: calc(100% + 2em);
+  width: 100%;
   margin: 3%;
+  height: 3em;
 `
