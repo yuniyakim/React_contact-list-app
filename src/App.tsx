@@ -3,6 +3,7 @@ import {Navigate, Route, Routes} from "react-router-dom";
 import ContactsPage from "./pages/ContactsPage";
 import LoginPage from "./pages/LoginPage";
 import {RequireAuth} from "./components/RequireAuth";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const App = () => {
   return (
