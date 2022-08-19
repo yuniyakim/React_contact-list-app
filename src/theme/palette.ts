@@ -6,6 +6,5 @@ export const colors = {
   red: '#DD0000',
   redHover: '#A00000',
   text: '#FFFFFF',
-  border: '#DDDDDD',
   background: '#F5F5F5',
 };
