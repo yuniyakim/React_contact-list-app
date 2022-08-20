@@ -35,7 +35,7 @@ const ContactsPage = () => {
 
   const handleEditContact = (id: number, surname: string, name: string) => {
     if (userId !== null) {
-      editContact(id, surname, name);
+      editContact(id, surname, name, userId);
     }
   }
 

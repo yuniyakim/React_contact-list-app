@@ -47,12 +47,14 @@ export const addContact = (surname: string, name: string, userId: number) => {
   }
 }
 
-export const editContact = (id: number, surname: string, name: string) => {
+export const editContact = (id: number, surname: string, name: string, userId: number) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.EDIT_CONTACT});
-      const response = await axios.put(`${url}/contacts`, {
-        params: {_id: id, _surname: surname, _name: name},
+      const response = await axios.put(`${url}/contacts/${id}`, JSON.stringify({surname, name, userId}), {
+        headers: {
+          'Content-Type': 'application/json',
+        }
       });
       dispatch({
         type: ContactActionTypes.EDIT_CONTACT_SUCCESS,
