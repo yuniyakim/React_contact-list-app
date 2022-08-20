@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
   StyledButton as Button,
   StyledForm as Form,
@@ -16,6 +16,24 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
     onSubmit: (surname: string, name: string, id?: number) => void, id?: number, surnameValue?: string, nameValue?: string}) => {
   const [formValues, setFormValues] = useState(initialState);
 
+  useEffect(() => {
+    setFormValues((prevState) => {
+      return({
+        ...prevState,
+        name: props.nameValue ?? '',
+      })
+    });
+  }, [props.nameValue]);
+
+  useEffect(() => {
+    setFormValues((prevState) => {
+      return({
+        ...prevState,
+        surname: props.surnameValue ?? '',
+      })
+    });
+  }, [props.surnameValue]);
+
   const handleClose = () => props.setVisible(false);
   const handleSubmit = () => {
     if (props.id) {
@@ -30,9 +48,9 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
     const { id, value } = event.target;
     setFormValues({
       ...formValues,
-      [id]: value,
+      [id]: value
     });
-  };
+  }
 
   return (
     <Modal show={props.isVisible} onHide={handleClose}>
