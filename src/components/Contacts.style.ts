@@ -1,13 +1,14 @@
 import styled from 'styled-components';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {StyledButton as Button} from '../UI/Button.style';
-import * as palette from '../theme/palette';
 
 export const StyledContactsContainer = styled(ListGroup)`
   font-family: 'Open Sans', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 2%;
+  margin-bottom: 2%;
 `
 
 export const StyledContact = styled(ListGroup.Item)`
