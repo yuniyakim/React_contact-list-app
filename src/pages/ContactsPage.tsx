@@ -29,19 +29,19 @@ const ContactsPage = () => {
 
   const handleAddContact = (surname: string, name: string) => {
     if (userId !== null) {
-      addContact(surname, name, userId);
+      addContact(surname, name, userId, token);
     }
   }
 
   const handleEditContact = (id: number, surname: string, name: string) => {
     if (userId !== null) {
-      editContact(id, surname, name, userId);
+      editContact(id, surname, name, userId, token);
     }
   }
 
   const handleDeleteContact = (id: number) => {
     if (userId !== null) {
-      deleteContact(id);
+      deleteContact(id, token);
     }
   }
 

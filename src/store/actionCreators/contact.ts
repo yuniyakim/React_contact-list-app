@@ -7,10 +7,11 @@ export const fetchContacts = (userId: number | null, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.FETCH_CONTACTS});
-      const response = await axios.get(`${url}/user/${userId}/contacts`, {
+      const response = await axios.get(`${url}/600/contacts`, {
         headers: {
-          Authorization: `Bearer ${token}`
-        }
+          'Authorization': `Bearer ${token}`
+        },
+        params: {userId},
       });
       dispatch({
         type: ContactActionTypes.FETCH_CONTACTS_SUCCESS,
@@ -25,13 +26,14 @@ export const fetchContacts = (userId: number | null, token: string | null) => {
   }
 }
 
-export const addContact = (surname: string, name: string, userId: number) => {
+export const addContact = (surname: string, name: string, userId: number, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.ADD_CONTACT});
-      const response = await axios.post(`${url}/contacts`, JSON.stringify({surname, name, userId}), {
+      const response = await axios.post(`${url}/600/contacts`, JSON.stringify({surname, name, userId}), {
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         }
       });
       dispatch({
@@ -47,13 +49,14 @@ export const addContact = (surname: string, name: string, userId: number) => {
   }
 }
 
-export const editContact = (id: number, surname: string, name: string, userId: number) => {
+export const editContact = (id: number, surname: string, name: string, userId: number, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.EDIT_CONTACT});
-      const response = await axios.put(`${url}/contacts/${id}`, JSON.stringify({surname, name, userId}), {
+      const response = await axios.put(`${url}/600/contacts/${id}`, JSON.stringify({surname, name, userId}), {
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         }
       });
       dispatch({
@@ -69,13 +72,14 @@ export const editContact = (id: number, surname: string, name: string, userId: n
   }
 }
 
-export const deleteContact = (id: number) => {
+export const deleteContact = (id: number, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.DELETE_CONTACT});
-      await axios.delete(`${url}/contacts/${id}`, {
+      await axios.delete(`${url}/600/contacts/${id}`, {
         headers: {
           'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
         }
       });
       dispatch({
