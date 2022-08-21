@@ -23,7 +23,6 @@ export const StyledSearchForm = styled(Form)`
 
 export const StyledSearchFormControl = styled(Form.Control)`
   width: 250px;
-  margin-right: 5px;
 `
 
 export const StyledButton = styled(Button)`
