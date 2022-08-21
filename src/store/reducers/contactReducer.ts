@@ -55,7 +55,9 @@ export const contactReducer = (state = initialState, action: ContactAction): Con
       return {
         ...state, loading: false, filteredContacts: state.contacts.filter(contact =>
           contact.surname.toLowerCase().includes(action.payload.trim().toLowerCase()) ||
-          contact.name.toLowerCase().includes(action.payload.trim().toLowerCase()))
+          contact.name.toLowerCase().includes(action.payload.trim().toLowerCase()) ||
+          `${contact.surname.toLowerCase()} ${contact.name.toLowerCase()}`.includes(action.payload.trim().toLowerCase()) ||
+          `${contact.name.toLowerCase()} ${contact.surname.toLowerCase()}`.includes(action.payload.trim().toLowerCase()))
       }
     }
     case ContactActionTypes.SEARCH_CONTACT_ERROR: {
