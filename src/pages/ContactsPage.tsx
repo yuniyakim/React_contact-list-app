@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import Header from "../components/Header";
 import Toolbar from "../components/Toolbar";
 import Contacts from "../components/Contacts";
@@ -6,10 +6,15 @@ import {useAppActions, useAppSelector} from "../hooks";
 import {useNavigate} from "react-router-dom";
 
 const ContactsPage = () => {
-  const {contacts, error, loading} = useAppSelector(state => state.contact);
+  const {contacts, filteredContacts, error, loading} = useAppSelector(state => state.contact);
   const {userId, token} = useAppSelector(state => state.auth);
-  const {fetchContacts, addContact, editContact, deleteContact, logout} = useAppActions();
+  const {fetchContacts, addContact, editContact, deleteContact, searchContact, logout} = useAppActions();
   let navigate = useNavigate();
+  const [searchValue, setSearchValue] = useState('');
+
+  useEffect(() => {
+    searchContact(searchValue);
+  }, [contacts]);
 
   useEffect(() => {
     fetchContacts(userId, token);
@@ -45,11 +50,16 @@ const ContactsPage = () => {
     }
   }
 
+  const handleSearch = (searchValue: string) => {
+    setSearchValue(searchValue);
+    searchContact(searchValue);
+  }
+
   return (
     <div>
       <Header pageTitle="Contacts list" onLogout={handleLogout} />
-      <Toolbar onAddContact={handleAddContact} />
-      <Contacts contacts={contacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} />
+      <Toolbar onAddContact={handleAddContact} onSearch={handleSearch} />
+      <Contacts contacts={filteredContacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} />
     </div>
   );
 };

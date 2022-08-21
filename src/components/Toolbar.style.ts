@@ -26,9 +26,6 @@ export const StyledSearchFormControl = styled(Form.Control)`
   margin-right: 5px;
 `
 
-export const StyledSearchButton = styled(Button)`
-`
-
 export const StyledButton = styled(Button)`
   margin-left: 3%;
 `

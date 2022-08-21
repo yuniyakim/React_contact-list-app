@@ -7,6 +7,7 @@ export interface Contact {
 
 export interface ContactState {
   contacts: Contact[];
+  filteredContacts: Contact[];
   loading: boolean;
   error: null | string;
 }
@@ -24,6 +25,9 @@ export enum ContactActionTypes {
   DELETE_CONTACT = 'DELETE_CONTACT',
   DELETE_CONTACT_SUCCESS = 'DELETE_CONTACT_SUCCESS',
   DELETE_CONTACT_ERROR = 'DELETE_CONTACT_ERROR',
+  SEARCH_CONTACT = 'SEARCH_CONTACT',
+  SEARCH_CONTACT_SUCCESS = 'SEARCH_CONTACT_SUCCESS',
+  SEARCH_CONTACT_ERROR = 'SEARCH_CONTACT_ERROR',
 }
 
 interface FetchContactsAction {
@@ -44,12 +48,12 @@ interface AddContactAction {
   type: ContactActionTypes.ADD_CONTACT;
 }
 
-interface AddContactActionSuccessAction {
+interface AddContactSuccessAction {
   type: ContactActionTypes.ADD_CONTACT_SUCCESS;
   payload: Contact;
 }
 
-interface AddContactActionErrorAction {
+interface AddContactErrorAction {
   type: ContactActionTypes.ADD_CONTACT_ERROR;
   payload: string;
 }
@@ -58,12 +62,12 @@ interface EditContactAction {
   type: ContactActionTypes.EDIT_CONTACT;
 }
 
-interface EditContactActionSuccessAction {
+interface EditContactSuccessAction {
   type: ContactActionTypes.EDIT_CONTACT_SUCCESS;
   payload: Contact;
 }
 
-interface EditContactActionErrorAction {
+interface EditContactErrorAction {
   type: ContactActionTypes.EDIT_CONTACT_ERROR;
   payload: string;
 }
@@ -72,13 +76,27 @@ interface DeleteContactAction {
   type: ContactActionTypes.DELETE_CONTACT;
 }
 
-interface DeleteContactActionSuccessAction {
+interface DeleteContactSuccessAction {
   type: ContactActionTypes.DELETE_CONTACT_SUCCESS;
   payload: number;
 }
 
-interface DeleteContactActionErrorAction {
+interface DeleteContactErrorAction {
   type: ContactActionTypes.DELETE_CONTACT_ERROR;
+  payload: string;
+}
+
+interface SearchContactAction {
+  type: ContactActionTypes.SEARCH_CONTACT;
+}
+
+interface SearchContactSuccessAction {
+  type: ContactActionTypes.SEARCH_CONTACT_SUCCESS;
+  payload: string;
+}
+
+interface SearchContactErrorAction {
+  type: ContactActionTypes.SEARCH_CONTACT_ERROR;
   payload: string;
 }
 
@@ -87,11 +105,14 @@ export type ContactAction =
   | FetchContactsSuccessAction
   | FetchContactsErrorAction
   | AddContactAction
-  | AddContactActionSuccessAction
-  | AddContactActionErrorAction
+  | AddContactSuccessAction
+  | AddContactErrorAction
   | EditContactAction
-  | EditContactActionSuccessAction
-  | EditContactActionErrorAction
+  | EditContactSuccessAction
+  | EditContactErrorAction
   | DeleteContactAction
-  | DeleteContactActionSuccessAction
-  | DeleteContactActionErrorAction;
+  | DeleteContactSuccessAction
+  | DeleteContactErrorAction
+  | SearchContactAction
+  | SearchContactSuccessAction
+  | SearchContactErrorAction;

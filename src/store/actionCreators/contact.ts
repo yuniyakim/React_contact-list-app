@@ -94,3 +94,20 @@ export const deleteContact = (id: number, token: string | null) => {
     }
   }
 }
+
+export const searchContact = (searchValue: string) => {
+  return async (dispatch: Dispatch<ContactAction>) => {
+    try {
+      dispatch({type: ContactActionTypes.SEARCH_CONTACT});
+      dispatch({
+        type: ContactActionTypes.SEARCH_CONTACT_SUCCESS,
+        payload: searchValue,
+      })
+    } catch (e) {
+      dispatch({
+        type: ContactActionTypes.SEARCH_CONTACT_ERROR,
+        payload: (e as AxiosError).response!.data as string,
+      });
+    }
+  }
+}
