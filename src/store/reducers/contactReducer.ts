@@ -1,5 +1,4 @@
 import {ContactAction, ContactActionTypes, ContactState} from "../../types/contact";
-import contacts from "../../components/Contacts";
 
 const initialState: ContactState = {
   contacts: [],
@@ -50,11 +49,17 @@ export const contactReducer = (state = initialState, action: ContactAction): Con
       return {...state, loading: true, error: null};
     }
     case ContactActionTypes.SEARCH_CONTACT_SUCCESS: {
+      const words = action.payload.trim().toLowerCase().split(' ');
       if (action.payload === '') {
         return {...state, loading: false, filteredContacts: state.contacts};
       }
-      return {...state, loading: false, filteredContacts: state.contacts.filter(contact =>
-          contact.surname.toLowerCase().includes(action.payload.toLowerCase()) || contact.name.toLowerCase().includes(action.payload.toLowerCase()))};
+      return {
+        ...state, loading: false, filteredContacts: state.contacts.filter(contact =>
+          words.every(word => {
+            return contact.surname.toLowerCase().includes(word) || contact.name.toLowerCase().includes(word);
+          })
+        )
+      }
     }
     case ContactActionTypes.SEARCH_CONTACT_ERROR: {
       return {...state, loading: false, error: action.payload};
