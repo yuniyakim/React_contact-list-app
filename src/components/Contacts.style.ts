@@ -32,11 +32,13 @@ export const StyledContactButtonsContainer = styled.div`
 
 export const StyledContactEditButton = styled(Button)`
   margin-right: 3%;
+  padding: 0;
   height: 2.5em;
   width: 2.5em;
 `
 
 export const StyledContactDeleteButton = styled(Button)`
+  padding: 0;
   height: 2.5em;
   width: 2.5em;
 `
