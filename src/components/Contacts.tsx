@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {
   StyledSpinnerContainer as SpinnerContainer,
+  StyledSpinner as DarkSpinner,
   StyledContactsContainer as ContactsContainer,
   StyledContact as Contact,
   StyledContactText as ContactText,
@@ -42,7 +43,7 @@ const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, s
   }
 
   if (props.loading && props.contacts.length === 0) {
-    return <SpinnerContainer><Spinner animation="border" variant="primary" /></SpinnerContainer>
+    return <SpinnerContainer><DarkSpinner animation="border" /></SpinnerContainer>
   }
 
   return (
