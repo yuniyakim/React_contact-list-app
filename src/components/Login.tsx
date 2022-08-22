@@ -4,8 +4,8 @@ import {
   StyledForm as Form,
   StyledTitle as Title,
   StyledFormControl as FormControl,
-  StyledErrorContainer as ErrorContainer,
   StyledError as Error,
+  StyledErrorHeading as ErrorHeading,
   StyledButton as Button
 } from './Login.style';
 import {User} from "../types/auth";
@@ -35,7 +35,7 @@ const Login = (props: {onSubmit: (values: User) => void, loading: boolean, error
         </Title>
         <FormControl type="email" placeholder="Email" onChange={handleTextFieldChange} />
         <FormControl type="password" placeholder="Password" onChange={handleTextFieldChange} />
-        {props.error !== null ? <ErrorContainer><Error>Error</Error>{props.error}</ErrorContainer> : <></>}
+        {props.error !== null ? <Error><ErrorHeading>Error</ErrorHeading>{props.error}</Error> : <></>}
         <Button onClick={() => props.onSubmit(formValues)}>
           {props.loading ? <Spinner animation="border" variant="light" /> : 'Sign in'}
         </Button>

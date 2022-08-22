@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
 import {StyledButton as Button} from "../UI/Button.style";
+import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../UI/Error.style";
 import * as palette from '../theme/palette';
 
 export const StyledFormContainer = styled.div`
@@ -35,21 +35,12 @@ export const StyledFormControl = styled(Form.Control)`
   height: 3em;
 `
 
-export const StyledErrorContainer = styled(Alert)`
-  display: flex;
-  flex-direction: column;
-  font-family: 'Open Sans', sans-serif;
-  font-size: 14px;
+export const StyledError = styled(Error)`
   width: 100%;
   margin: 3%;
-  background-color: ${palette.colors.red};
-  color: ${palette.colors.text};
 `
 
-export const StyledError = styled.p`
-  font-size: 16px;
-  font-weight: bold;
-  margin: 0 0 0.2em 0;
+export const StyledErrorHeading = styled(ErrorHeading)`
 `
 
 export const StyledButton = styled(Button)`
