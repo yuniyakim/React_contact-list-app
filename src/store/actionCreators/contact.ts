@@ -7,11 +7,10 @@ export const fetchContacts = (userId: number | null, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.FETCH_CONTACTS});
-      const response = await axios.get(`${url}/600/contacts`, {
+      const response = await axios.get(`${url}/600/users/${userId}/contacts`, {
         headers: {
           'Authorization': `Bearer ${token}`
-        },
-        params: {userId},
+        }
       });
       dispatch({
         type: ContactActionTypes.FETCH_CONTACTS_SUCCESS,
@@ -30,7 +29,7 @@ export const addContact = (surname: string, name: string, userId: number, token:
   return async (dispatch: Dispatch<ContactAction>) => {
     try {
       dispatch({type: ContactActionTypes.ADD_CONTACT});
-      const response = await axios.post(`${url}/600/contacts`, JSON.stringify({surname, name, userId}), {
+      const response = await axios.post(`${url}/600/users/${userId}/contacts`, JSON.stringify({surname, name, userId}), {
         headers: {
           'Content-Type': 'application/json',
           'Authorization': `Bearer ${token}`
