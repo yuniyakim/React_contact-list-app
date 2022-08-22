@@ -1,4 +1,4 @@
-# Тестовое задание
+# Тестовое задание [![Build Status](https://app.travis-ci.com/yuniyakim/React_contact-list-app.svg?branch=main)](https://app.travis-ci.com/yuniyakim/React_contact-list-app)
 
 ## Getting started
 
