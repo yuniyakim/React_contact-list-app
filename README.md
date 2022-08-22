@@ -1,4 +1,4 @@
-# Тестовое задание [![Build Status](https://app.travis-ci.com/yuniyakim/React_contact-list-app.svg?branch=main)](https://app.travis-ci.com/yuniyakim/React_contact-list-app)
+# Тестовое задание [![Build Status](https://app.travis-ci.com/yuniyakim/React_contact-list-app.svg?branch=master)](https://app.travis-ci.com/yuniyakim/React_contact-list-app)
 
 ## Installing
 
