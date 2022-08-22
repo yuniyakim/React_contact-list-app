@@ -1,11 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import {
-  StyledButton as Button,
+  StyledModal as Modal,
+  StyledModalHeader as ModalHeader,
+  StyledModalTitle as ModalTitle,
+  StyledModalBody as ModalBody,
+  StyledModalFooter as ModalFooter,
   StyledForm as Form,
   StyledFormControl as FormControl,
-  StyledModalBody as ModalBody
+  StyledButton as Button
 } from "./ContactModal.style";
-import Modal from 'react-bootstrap/Modal';
 import Spinner from 'react-bootstrap/Spinner';
 
 const initialState = {
@@ -65,23 +68,23 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
 
   return (
     <Modal show={props.isVisible} onHide={handleClose}>
-      <Modal.Header closeButton>
-        <Modal.Title>{props.title}</Modal.Title>
-      </Modal.Header>
+      <ModalHeader closeButton>
+        <ModalTitle>{props.title}</ModalTitle>
+      </ModalHeader>
       <ModalBody>
         <Form>
           <FormControl type="text" id="surname" placeholder="Surname" defaultValue={props.surnameValue ?? ''} onChange={handleTextFieldChange} />
           <FormControl type="text" id="name" placeholder="Name" defaultValue={props.nameValue ?? ''} onChange={handleTextFieldChange} />
         </Form>
       </ModalBody>
-      <Modal.Footer>
+      <ModalFooter>
         <Button danger onClick={handleClose}>
           Cancel
         </Button>
         <Button onClick={handleSubmit}>
           {props.loading ? <Spinner animation="border" variant="light" /> : props.submitButtonTitle}
         </Button>
-      </Modal.Footer>
+      </ModalFooter>
     </Modal>
   );
 };

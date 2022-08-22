@@ -8,14 +8,14 @@ export const StyledHeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 80px;
+  height: 5.5rem;
   background-color: ${palette.colors.primary};
 `
 
 export const StyledTitle = styled.div`
   font-size: 24px;
   color: ${palette.colors.text};
-  margin: 3%;
+  margin-left: 3rem;
 `
 
 export const StyledError = styled(Error)` 
@@ -27,7 +27,7 @@ export const StyledErrorHeading = styled(ErrorHeading)`
 `
 
 export const StyledButton = styled(Button)`
-  margin: 3%;
-  height: 2.5em;
-  width: 6em;
+  margin-right: 3rem;
+  height: 2.5rem;
+  width: 6rem;
 `

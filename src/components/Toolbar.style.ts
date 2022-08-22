@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
 import {StyledButton as Button} from "../UI/Button.style";
-import Modal from 'react-bootstrap/Modal';
 import * as palette from '../theme/palette';
 
 export const StyledToolbarContainer = styled.div`
@@ -9,7 +8,7 @@ export const StyledToolbarContainer = styled.div`
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  height: 65px;
+  height: 4.5rem;
   background-color: ${palette.colors.background};
 `
 
@@ -18,31 +17,15 @@ export const StyledSearchForm = styled(Form)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 2em;
+  margin-right: 3rem;
 `
 
 export const StyledSearchFormControl = styled(Form.Control)`
   width: 250px;
-  height: 2.5em;
+  height: 2.5rem;
 `
 
 export const StyledButton = styled(Button)`
-  margin-left: 3%;
-  height: 2.5em;
-`
-
-export const StyledModalBody = styled(Modal.Body)`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`
-
-export const StyledForm = styled(Form)`
-  font-family: 'Open Sans', sans-serif;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 2em;
-  width: 100%;
+  margin-left: 3rem;
+  height: 2.5rem;
 `

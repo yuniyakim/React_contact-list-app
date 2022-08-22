@@ -8,7 +8,7 @@ export const StyledSpinnerContainer = styled.div`
   display: flex;
   justify-content: center;
   width: 100%;
-  margin-top: 2%;
+  margin-top: 2rem;
 `
 
 export const StyledSpinner = styled(Spinner)`
@@ -20,8 +20,8 @@ export const StyledContactsContainer = styled(ListGroup)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 2%;
-  margin-bottom: 2%;
+  margin: 1rem 3rem;
+  
 `
 
 export const StyledContact = styled(ListGroup.Item)`
@@ -29,8 +29,8 @@ export const StyledContact = styled(ListGroup.Item)`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 4em;
-  width: 95%;
+  height: 4rem;
+  width: 100%;
 `
 
 export const StyledContactText = styled.p`
@@ -40,18 +40,18 @@ export const StyledContactText = styled.p`
 export const StyledContactButtonsContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  margin: 1em;
+  margin: 1rem;
 `
 
 export const StyledContactEditButton = styled(Button)`
-  margin-right: 3%;
+  margin-right: 0.5rem;
   padding: 0;
-  height: 2.5em;
-  width: 2.5em;
+  height: 2.5rem;
+  width: 2.5rem;
 `
 
 export const StyledContactDeleteButton = styled(Button)`
   padding: 0;
-  height: 2.5em;
-  width: 2.5em;
+  height: 2.5rem;
+  width: 2.5rem;
 `
