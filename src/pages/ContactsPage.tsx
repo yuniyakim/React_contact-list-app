@@ -57,7 +57,7 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <Header pageTitle="Contacts list" onLogout={handleLogout} />
+      <Header pageTitle="Contacts list" onLogout={handleLogout} error={error} />
       <Toolbar onAddContact={handleAddContact} onSearch={handleSearch} />
       <Contacts contacts={filteredContacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} />
     </div>
