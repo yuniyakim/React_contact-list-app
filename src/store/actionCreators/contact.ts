@@ -12,10 +12,12 @@ export const fetchContacts = (userId: number | null, token: string | null) => {
           'Authorization': `Bearer ${token}`
         }
       });
-      dispatch({
-        type: ContactActionTypes.FETCH_CONTACTS_SUCCESS,
-        payload: (response.data as Contact[]),
-      });
+      setTimeout(() => {
+        dispatch({
+          type: ContactActionTypes.FETCH_CONTACTS_SUCCESS,
+          payload: (response.data as Contact[]),
+        });
+      }, 1000);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.FETCH_CONTACTS_ERROR,
