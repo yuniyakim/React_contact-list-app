@@ -3,13 +3,11 @@ import Header from "../components/Header";
 import Toolbar from "../components/Toolbar";
 import Contacts from "../components/Contacts";
 import {useAppActions, useAppSelector} from "../hooks";
-import {useNavigate} from "react-router-dom";
 
 const ContactsPage = () => {
-  const {contacts, filteredContacts, error, loading} = useAppSelector(state => state.contact);
-  const {userId, token} = useAppSelector(state => state.auth);
+  const {contacts, filteredContacts, contactsLoading, contactsError} = useAppSelector(state => state.contact);
+  const {userId, token, authLoading, authError} = useAppSelector(state => state.auth);
   const {fetchContacts, addContact, editContact, deleteContact, searchContact, logout} = useAppActions();
-  let navigate = useNavigate();
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
@@ -19,14 +17,6 @@ const ContactsPage = () => {
   useEffect(() => {
     fetchContacts(userId, token);
   }, []);
-
-  useEffect(() => {
-    if (!loading) {
-      if (userId === null || token === null) {
-        return navigate('/');
-      }
-    }
-  }, [loading]);
 
   const handleLogout = () => {
     logout();
@@ -57,7 +47,8 @@ const ContactsPage = () => {
 
   return (
     <div>
-      <Header pageTitle="Contacts list" onLogout={handleLogout} error={error} />
+      <Header pageTitle="Contacts list" onLogout={handleLogout} loading={authLoading}
+              error={contactsError !== null ? contactsError : authError !== null ? authError : null} />
       <Toolbar onAddContact={handleAddContact} onSearch={handleSearch} />
       <Contacts contacts={filteredContacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} />
     </div>

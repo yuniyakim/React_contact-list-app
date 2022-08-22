@@ -34,9 +34,11 @@ export const logout = () => {
   return async (dispatch: Dispatch<AuthAction>) => {
     try {
       dispatch({type: AuthActionTypes.LOGOUT});
-      dispatch({
-        type: AuthActionTypes.LOGOUT_SUCCESS,
-      });
+      setTimeout(() => {
+        dispatch({
+          type: AuthActionTypes.LOGOUT_SUCCESS,
+        });
+      }, 1000);
     } catch (e) {
       dispatch({
         type: AuthActionTypes.LOGOUT_ERROR,

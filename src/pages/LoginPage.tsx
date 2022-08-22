@@ -5,24 +5,24 @@ import {User} from "../types/auth";
 import {useNavigate} from "react-router-dom";
 
 const LoginPage = () => {
-  const {userId, token, loading, error} = useAppSelector(state => state.auth);
+  const {userId, token, authLoading, authError} = useAppSelector(state => state.auth);
   const {login} = useAppActions();
   let navigate = useNavigate();
 
   useEffect(() => {
-    if (!loading) {
+    if (!authLoading) {
       if (userId !== null && token !== null) {
         return navigate('/contacts');
       }
     }
-  }, [loading]);
+  }, [authLoading]);
 
   const handleSubmit = (formValues: User) => {
     login(formValues);
   }
 
   return (
-    <Login onSubmit={handleSubmit} loading={loading} error={error} />
+    <Login onSubmit={handleSubmit} loading={authLoading} error={authError} />
   );
 };
 

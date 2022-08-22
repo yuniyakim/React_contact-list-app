@@ -6,8 +6,9 @@ import {
   StyledErrorHeading as ErrorHeading,
   StyledButton as Button
 } from './Header.style';
+import Spinner from "react-bootstrap/Spinner";
 
-const Header = (props: {pageTitle: string, onLogout: () => void, error: string | null}) => {
+const Header = (props: {pageTitle: string, onLogout: () => void, loading: boolean, error: string | null}) => {
   const [show, setShow] = useState(props.error !== null);
 
   useEffect(() => {
@@ -24,7 +25,7 @@ const Header = (props: {pageTitle: string, onLogout: () => void, error: string |
       <Title>{props.pageTitle}</Title>
       <Error show={show} onClose={() => setShow(false)} dismissible><ErrorHeading>Error</ErrorHeading>{props.error}</Error>
       <Button onClick={() => props.onLogout()}>
-        Log Out
+        {props.loading ? <Spinner animation="border" variant="light" /> : 'Log Out'}
       </Button>
     </HeaderContainer>
   );

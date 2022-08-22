@@ -8,8 +8,8 @@ export interface Contact {
 export interface ContactState {
   contacts: Contact[];
   filteredContacts: Contact[];
-  loading: boolean;
-  error: null | string;
+  contactsLoading: boolean;
+  contactsError: null | string;
 }
 
 export enum ContactActionTypes {

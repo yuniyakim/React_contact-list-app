@@ -6,8 +6,8 @@ export interface User {
 export interface AuthState {
   userId: number | null;
   token: string | null;
-  loading: boolean;
-  error: null | string;
+  authLoading: boolean;
+  authError: null | string;
 }
 
 export enum AuthActionTypes {
