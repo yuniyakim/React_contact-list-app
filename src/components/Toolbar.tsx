@@ -7,7 +7,7 @@ import {
 } from './Toolbar.style';
 import ContactModal from "./ContactModal";
 
-const Toolbar = (props: {onAddContact: (surname: string, name: string) => void, onSearch: (searchValue: string) => void}) => {
+const Toolbar = (props: {onAddContact: (surname: string, name: string) => void, onSearch: (searchValue: string) => void, loading: boolean}) => {
   const [isVisible, setVisible] = useState(false);
 
   const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -23,7 +23,8 @@ const Toolbar = (props: {onAddContact: (surname: string, name: string) => void, 
           <SearchFormControl type="search" placeholder="Search" onChange={handleTextFieldChange} />
         </SearchForm>
       </ToolbarContainer>
-      <ContactModal isVisible={isVisible} setVisible={setVisible} title="Add contact" submitButtonTitle="Add" onSubmit={props.onAddContact}/>
+      <ContactModal isVisible={isVisible} setVisible={setVisible} title="Add contact" submitButtonTitle="Add" onSubmit={props.onAddContact}
+                    loading={props.loading} />
     </>
   );
 };

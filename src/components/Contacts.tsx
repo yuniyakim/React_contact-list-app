@@ -10,10 +10,12 @@ import {
 import 'bootstrap-icons/font/bootstrap-icons.css';
 import {Contact as ContactType} from '../types/contact';
 import ContactModal from "./ContactModal";
+import Spinner from "react-bootstrap/Spinner";
 
 const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, surname: string, name: string) => void,
-  onDeleteContact: (id: number) => void}) => {
+  onDeleteContact: (id: number) => void, loading: boolean}) => {
   const [isVisible, setVisible] = useState(false);
+  const [contactIdToDelete, setContactIdToDelete] = useState(-1);
 
   const initialCurrentContact = {
     id: -1,
@@ -34,6 +36,7 @@ const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, s
   }
 
   const handleDelete = (id: number) => {
+    setContactIdToDelete(id);
     props.onDeleteContact(id);
   }
 
@@ -47,13 +50,13 @@ const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, s
               <i className="bi bi-pencil"></i>
             </ContactEditButton>
             <ContactDeleteButton danger onClick={() => handleDelete(contact.id)}>
-              <i className="bi bi-trash"></i>
+              {props.loading && contact.id === contactIdToDelete ? <Spinner animation="border" variant="light" /> : <i className="bi bi-trash"></i>}
             </ContactDeleteButton>
           </ContactButtonsContainer>
         </Contact>
       )}
       <ContactModal isVisible={isVisible} setVisible={setVisible} title="Edit contact" submitButtonTitle="Save" onSubmit={handleEdit}
-                    id={currentContact.id} surnameValue={currentContact.surname} nameValue={currentContact.name} />
+                    id={currentContact.id} surnameValue={currentContact.surname} nameValue={currentContact.name} loading={props.loading} />
     </ContactsContainer>
   );
 };

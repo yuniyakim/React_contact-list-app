@@ -6,6 +6,7 @@ import {
   StyledModalBody as ModalBody
 } from "./ContactModal.style";
 import Modal from 'react-bootstrap/Modal';
+import Spinner from 'react-bootstrap/Spinner';
 
 const initialState = {
   surname: '',
@@ -13,7 +14,7 @@ const initialState = {
 }
 
 const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolean) => void, title: string, submitButtonTitle: string,
-    onSubmit: (surname: string, name: string, id?: number) => void, id?: number, surnameValue?: string, nameValue?: string}) => {
+    onSubmit: (surname: string, name: string, id?: number) => void, id?: number, surnameValue?: string, nameValue?: string, loading: boolean}) => {
   const [formValues, setFormValues] = useState(initialState);
 
   useEffect(() => {
@@ -34,14 +35,24 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
     });
   }, [props.surnameValue]);
 
-  const handleClose = () => props.setVisible(false);
+  useEffect(() => {
+    if (!props.loading) {
+      props.setVisible(false);
+    }
+  }, [props.loading]);
+
+  const handleClose = () => {
+    props.setVisible(false);
+    setFormValues(initialState);
+  }
+
   const handleSubmit = () => {
     if (props.id) {
       props.onSubmit(formValues.surname, formValues.name, props.id);
     } else {
       props.onSubmit(formValues.surname, formValues.name);
     }
-    props.setVisible(false);
+    setFormValues(initialState);
   }
 
   const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -68,7 +79,7 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
           Cancel
         </Button>
         <Button onClick={handleSubmit}>
-          {props.submitButtonTitle}
+          {props.loading ? <Spinner animation="border" variant="light" /> : props.submitButtonTitle}
         </Button>
       </Modal.Footer>
     </Modal>

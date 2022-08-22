@@ -49,8 +49,8 @@ const ContactsPage = () => {
     <div>
       <Header pageTitle="Contacts list" onLogout={handleLogout} loading={authLoading}
               error={contactsError !== null ? contactsError : authError !== null ? authError : null} />
-      <Toolbar onAddContact={handleAddContact} onSearch={handleSearch} />
-      <Contacts contacts={filteredContacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} />
+      <Toolbar onAddContact={handleAddContact} onSearch={handleSearch} loading={contactsLoading} />
+      <Contacts contacts={filteredContacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} loading={contactsLoading} />
     </div>
   );
 };

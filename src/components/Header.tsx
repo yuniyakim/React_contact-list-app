@@ -25,7 +25,7 @@ const Header = (props: {pageTitle: string, onLogout: () => void, loading: boolea
       <Title>{props.pageTitle}</Title>
       <Error show={show} onClose={() => setShow(false)} dismissible><ErrorHeading>Error</ErrorHeading>{props.error}</Error>
       <Button onClick={() => props.onLogout()}>
-        {props.loading ? <Spinner animation="border" variant="light" /> : 'Log Out'}
+        {props.loading ? <Spinner animation="border" variant="light" /> : 'Log out'}
       </Button>
     </HeaderContainer>
   );
