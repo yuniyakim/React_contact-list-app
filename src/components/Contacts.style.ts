@@ -2,6 +2,13 @@ import styled from 'styled-components';
 import ListGroup from 'react-bootstrap/ListGroup';
 import {StyledButton as Button} from '../UI/Button.style';
 
+export const StyledSpinnerContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2%;
+`
+
 export const StyledContactsContainer = styled(ListGroup)`
   font-family: 'Open Sans', sans-serif;
   display: flex;

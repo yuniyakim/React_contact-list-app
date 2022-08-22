@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {
+  StyledSpinnerContainer as SpinnerContainer,
   StyledContactsContainer as ContactsContainer,
   StyledContact as Contact,
   StyledContactText as ContactText,
@@ -38,6 +39,10 @@ const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, s
   const handleDelete = (id: number) => {
     setContactIdToDelete(id);
     props.onDeleteContact(id);
+  }
+
+  if (props.loading && props.contacts.length === 0) {
+    return <SpinnerContainer><Spinner animation="border" variant="primary" /></SpinnerContainer>
   }
 
   return (

@@ -7,7 +7,7 @@ import {useAppActions, useAppSelector} from "../hooks";
 const ContactsPage = () => {
   const {contacts, filteredContacts, contactsLoading, contactsError} = useAppSelector(state => state.contact);
   const {userId, token, authLoading, authError} = useAppSelector(state => state.auth);
-  const {fetchContacts, addContact, editContact, deleteContact, searchContact, logout} = useAppActions();
+  const {fetchContacts, addContact, editContact, deleteContact, searchContact, clearContacts, logout} = useAppActions();
   const [searchValue, setSearchValue] = useState('');
 
   useEffect(() => {
@@ -20,6 +20,7 @@ const ContactsPage = () => {
 
   const handleLogout = () => {
     logout();
+    clearContacts();
   }
 
   const handleAddContact = (surname: string, name: string) => {
