@@ -1,15 +1,39 @@
 # Тестовое задание [![Build Status](https://app.travis-ci.com/yuniyakim/React_contact-list-app.svg?branch=main)](https://app.travis-ci.com/yuniyakim/React_contact-list-app)
 
+## Installing
+
+Don't forget to install all the necessary dependencies both in the root directory and `server` folder:
+```cmd
+cd server && npm install && cd .. && npm install
+```
+
 ## Getting started
 
-To start the application, in the project directory run:
+To start the application, in the root directory run:
 ```cmd
 npm run dev
 ```
+**_Note:_** Server runs on port 3000 and client runs on port 3001.
+
+### Users
+
+There are two built-in available users:
+1. Email: user@example.com
+Password: 12345678
+
+2. Email: harrypotter@hp.com
+Password: qwerty123
+
 
 ### Node version
 
-This app was created using Node v16.14.2.
+This application was created using Node v16.14.2.
+
+
+### Server
+
+This application uses [JSON Server](https://github.com/typicode/json-server) for fake REST API and [JSON Server Auth](https://github.com/jeremyben/json-server-auth) for JWT authentication middleware created for JSON Server.
+
 
 ## Основное задание
 
