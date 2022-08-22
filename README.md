@@ -7,28 +7,29 @@ Don't forget to install all the necessary dependencies both in the root director
 cd server && npm install && cd .. && npm install
 ```
 
+
 ## Getting started
 
 To start the application, in the root directory run:
 ```cmd
 npm run dev
 ```
-**_Note:_** Server runs on port 3000 and client runs on port 3001.
+**_NOTE:_** Server runs on port 3000 and client runs on port 3001.
 
 ### Users
 
 There are two built-in available users:
-1. Email: user@example.com
-Password: 12345678
+* User 1
 
-2. Email: harrypotter@hp.com
-Password: qwerty123
+> Email: user@example.com / Password: 12345678
 
+* User 2
+
+> Email: harrypotter@hp.com / Password: qwerty123
 
 ### Node version
 
 This application was created using Node v16.14.2.
-
 
 ### Server
 
