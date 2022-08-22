@@ -1,5 +1,16 @@
 # Тестовое задание
 
+## Getting started
+
+To start the application, in the project directory run:
+```cmd
+npm run dev
+```
+
+### Node version
+
+This app was created using Node v16.14.2.
+
 ## Основное задание
 
 Необходимо написать приложение личный кабинет.
