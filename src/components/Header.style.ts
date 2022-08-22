@@ -28,4 +28,6 @@ export const StyledErrorHeading = styled(ErrorHeading)`
 
 export const StyledButton = styled(Button)`
   margin: 3%;
+  height: 2.5em;
+  width: 6em;
 `

@@ -5,6 +5,8 @@ import Modal from 'react-bootstrap/Modal';
 
 export const StyledButton = styled(Button)`
   margin-left: 3%;
+  height: 2.5em;
+  width: 5em;
 `
 
 export const StyledModalBody = styled(Modal.Body)`

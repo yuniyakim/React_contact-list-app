@@ -23,10 +23,12 @@ export const StyledSearchForm = styled(Form)`
 
 export const StyledSearchFormControl = styled(Form.Control)`
   width: 250px;
+  height: 2.5em;
 `
 
 export const StyledButton = styled(Button)`
   margin-left: 3%;
+  height: 2.5em;
 `
 
 export const StyledModalBody = styled(Modal.Body)`
@@ -43,10 +45,4 @@ export const StyledForm = styled(Form)`
   align-items: center;
   padding: 2em;
   width: 100%;
-`
-
-export const StyledFormControl = styled(Form.Control)`
-  width: 100%;
-  margin: 3%;
-  height: 3em;
 `
