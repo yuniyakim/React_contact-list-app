@@ -2,7 +2,7 @@
 
 ## Installing
 
-Don't forget to install all the necessary dependencies both in the root directory and `server` folder:
+Don't forget to install all the necessary dependencies both in the root directory and *server* folder:
 ```cmd
 cd server && npm install && cd .. && npm install
 ```
@@ -21,11 +21,11 @@ npm run dev
 There are two built-in available users:
 * User 1
 
-> Email: user@example.com / Password: 12345678
+**Email: user@example.com / Password: 12345678**
 
 * User 2
 
-> Email: harrypotter@hp.com / Password: qwerty123
+**Email: harrypotter@hp.com / Password: qwerty123**
 
 ### Node version
 
