@@ -35,10 +35,12 @@ export const addContact = (surname: string, name: string, userId: number, token:
           'Authorization': `Bearer ${token}`
         }
       });
-      dispatch({
-        type: ContactActionTypes.ADD_CONTACT_SUCCESS,
-        payload: response.data as Contact,
-      })
+      setTimeout(() => {
+        dispatch({
+          type: ContactActionTypes.ADD_CONTACT_SUCCESS,
+          payload: response.data as Contact,
+        })
+      }, 1000);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.ADD_CONTACT_ERROR,
@@ -58,10 +60,12 @@ export const editContact = (id: number, surname: string, name: string, userId: n
           'Authorization': `Bearer ${token}`
         }
       });
-      dispatch({
-        type: ContactActionTypes.EDIT_CONTACT_SUCCESS,
-        payload: response.data,
-      })
+      setTimeout(() => {
+        dispatch({
+          type: ContactActionTypes.EDIT_CONTACT_SUCCESS,
+          payload: response.data,
+        })
+      }, 1000);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.EDIT_CONTACT_ERROR,
@@ -81,10 +85,12 @@ export const deleteContact = (id: number, token: string | null) => {
           'Authorization': `Bearer ${token}`
         }
       });
-      dispatch({
-        type: ContactActionTypes.DELETE_CONTACT_SUCCESS,
-        payload: id,
-      })
+      setTimeout(() => {
+        dispatch({
+          type: ContactActionTypes.DELETE_CONTACT_SUCCESS,
+          payload: id,
+        })
+      }, 1000);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.DELETE_CONTACT_ERROR,
