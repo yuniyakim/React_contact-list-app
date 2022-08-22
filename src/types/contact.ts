@@ -28,6 +28,7 @@ export enum ContactActionTypes {
   SEARCH_CONTACT = 'SEARCH_CONTACT',
   SEARCH_CONTACT_SUCCESS = 'SEARCH_CONTACT_SUCCESS',
   SEARCH_CONTACT_ERROR = 'SEARCH_CONTACT_ERROR',
+  CLEAR_CONTACTS = 'CLEAR_CONTACTS',
 }
 
 interface FetchContactsAction {
@@ -100,6 +101,10 @@ interface SearchContactErrorAction {
   payload: string;
 }
 
+interface ClearContactsAction {
+  type: ContactActionTypes.CLEAR_CONTACTS;
+}
+
 export type ContactAction =
   FetchContactsAction
   | FetchContactsSuccessAction
@@ -115,4 +120,5 @@ export type ContactAction =
   | DeleteContactErrorAction
   | SearchContactAction
   | SearchContactSuccessAction
-  | SearchContactErrorAction;
+  | SearchContactErrorAction
+  | ClearContactsAction;

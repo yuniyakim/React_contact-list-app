@@ -42,7 +42,7 @@ export const addContact = (surname: string, name: string, userId: number, token:
           type: ContactActionTypes.ADD_CONTACT_SUCCESS,
           payload: response.data as Contact,
         })
-      }, 1000);
+      }, 500);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.ADD_CONTACT_ERROR,
@@ -67,7 +67,7 @@ export const editContact = (id: number, surname: string, name: string, userId: n
           type: ContactActionTypes.EDIT_CONTACT_SUCCESS,
           payload: response.data,
         })
-      }, 1000);
+      }, 500);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.EDIT_CONTACT_ERROR,
@@ -92,7 +92,7 @@ export const deleteContact = (id: number, token: string | null) => {
           type: ContactActionTypes.DELETE_CONTACT_SUCCESS,
           payload: id,
         })
-      }, 1000);
+      }, 500);
     } catch (e) {
       dispatch({
         type: ContactActionTypes.DELETE_CONTACT_ERROR,
@@ -116,5 +116,11 @@ export const searchContact = (searchValue: string) => {
         payload: (e as AxiosError).response!.data as string,
       });
     }
+  }
+}
+
+export const clearContacts = () => {
+  return async (dispatch: Dispatch<ContactAction>) => {
+    dispatch({type: ContactActionTypes.CLEAR_CONTACTS});
   }
 }

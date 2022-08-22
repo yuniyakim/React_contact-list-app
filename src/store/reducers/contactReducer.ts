@@ -63,6 +63,9 @@ export const contactReducer = (state = initialState, action: ContactAction): Con
     case ContactActionTypes.SEARCH_CONTACT_ERROR: {
       return {...state, contactsLoading: false, contactsError: action.payload}
     }
+    case ContactActionTypes.CLEAR_CONTACTS: {
+      return initialState;
+    }
     default: {
       return state;
     }
