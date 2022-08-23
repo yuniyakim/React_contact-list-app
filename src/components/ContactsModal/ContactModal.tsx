@@ -42,28 +42,16 @@ const ContactModal: React.FC<ContactModalProps> = ({
   const [formValues, setFormValues] = useState(initialState);
 
   useEffect(() => {
-    setFormValues((prevState) => {
+    setFormValues(() => {
       return({
-        ...prevState,
+        surname: surnameValue,
         name: nameValue,
       })
     });
-  }, [nameValue]);
-
-  useEffect(() => {
-    setFormValues((prevState) => {
-      return({
-        ...prevState,
-        surname: surnameValue,
-      })
-    });
-  }, [surnameValue]);
-
-  useEffect(() => {
     if (!loading) {
       setVisible(false);
     }
-  }, [loading]);
+  }, [nameValue, surnameValue, loading]);
 
   const handleClose = () => {
     setVisible(false);
@@ -72,11 +60,7 @@ const ContactModal: React.FC<ContactModalProps> = ({
 
   const handleSubmit = (e: MouseEvent) => {
     e.preventDefault();
-    if (id) {
-      onSubmit(formValues.surname, formValues.name, id);
-    } else {
-      onSubmit(formValues.surname, formValues.name);
-    }
+    onSubmit(formValues.surname, formValues.name, id);
     setFormValues(initialState);
   }
 

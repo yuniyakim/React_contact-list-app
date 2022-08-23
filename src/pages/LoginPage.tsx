@@ -11,7 +11,7 @@ const LoginPage = () => {
 
   useEffect(() => {
     if (!authLoading) {
-      if (userId !== null && token !== null) {
+      if (userId && token) {
         return navigate('/contacts');
       }
     }

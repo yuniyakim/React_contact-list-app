@@ -24,19 +24,19 @@ const ContactsPage = () => {
   }
 
   const handleAddContact = (surname: string, name: string) => {
-    if (userId !== null) {
+    if (userId) {
       addContact(surname, name, userId, token);
     }
   }
 
   const handleEditContact = (id: number, surname: string, name: string) => {
-    if (userId !== null) {
+    if (userId) {
       editContact(id, surname, name, userId, token);
     }
   }
 
   const handleDeleteContact = (id: number) => {
-    if (userId !== null) {
+    if (userId) {
       deleteContact(id, token);
     }
   }
@@ -49,7 +49,7 @@ const ContactsPage = () => {
   return (
     <div>
       <Header pageTitle="Contacts list" onLogout={handleLogout} loading={authLoading}
-              error={contactsError !== null ? contactsError : authError !== null ? authError : null} />
+              error={contactsError ? contactsError : authError ? authError : null} />
       <Toolbar onAddContact={handleAddContact} onSearch={handleSearch} loading={contactsLoading} />
       <Contacts contacts={filteredContacts} onEditContact={handleEditContact} onDeleteContact={handleDeleteContact} loading={contactsLoading} />
     </div>
