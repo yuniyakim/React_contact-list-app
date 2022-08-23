@@ -16,46 +16,65 @@ const initialState = {
   name: '',
 }
 
+interface ContactModalProps {
+  isVisible: boolean,
+  setVisible: (isVisible: boolean) => void,
+  title: string,
+  submitButtonTitle: string,
+  onSubmit: (surname: string, name: string, id?: number) => void,
+  id?: number,
+  surnameValue?: string,
+  nameValue?: string,
+  loading: boolean
+}
 
-
-const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolean) => void, title: string, submitButtonTitle: string,
-    onSubmit: (surname: string, name: string, id?: number) => void, id?: number, surnameValue?: string, nameValue?: string, loading: boolean}) => {
+const ContactModal: React.FC<ContactModalProps> = ({
+                                                     isVisible,
+                                                     setVisible,
+                                                     title,
+                                                     submitButtonTitle,
+                                                     onSubmit,
+                                                     id = -1,
+                                                     surnameValue = '',
+                                                     nameValue = '',
+                                                     loading
+}) => {
   const [formValues, setFormValues] = useState(initialState);
 
   useEffect(() => {
     setFormValues((prevState) => {
       return({
         ...prevState,
-        name: props.nameValue ?? '',
+        name: nameValue ?? '',
       })
     });
-  }, [props.nameValue]);
+  }, [nameValue]);
 
   useEffect(() => {
     setFormValues((prevState) => {
       return({
         ...prevState,
-        surname: props.surnameValue ?? '',
+        surname: surnameValue ?? '',
       })
     });
-  }, [props.surnameValue]);
+  }, [surnameValue]);
 
   useEffect(() => {
-    if (!props.loading) {
-      props.setVisible(false);
+    if (!loading) {
+      setVisible(false);
     }
-  }, [props.loading]);
+  }, [loading]);
 
   const handleClose = () => {
-    props.setVisible(false);
+    setVisible(false);
     setFormValues(initialState);
   }
 
   const handleSubmit = () => {
-    if (props.id) {
-      props.onSubmit(formValues.surname, formValues.name, props.id);
+    if (id) {
+      onSubmit(formValues.surname, formValues.name, id);
     } else {
-      props.onSubmit(formValues.surname, formValues.name);
+      onSubmit(formValues.surname, formValues.name);
     }
     setFormValues(initialState);
   }
@@ -69,14 +88,14 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
   }
 
   return (
-    <Modal show={props.isVisible} onHide={handleClose}>
+    <Modal show={isVisible} onHide={handleClose}>
       <ModalHeader closeButton>
-        <ModalTitle>{props.title}</ModalTitle>
+        <ModalTitle>{title}</ModalTitle>
       </ModalHeader>
       <ModalBody>
         <Form>
-          <FormControl type="text" id="surname" placeholder="Surname" defaultValue={props.surnameValue ?? ''} onChange={handleTextFieldChange} />
-          <FormControl type="text" id="name" placeholder="Name" defaultValue={props.nameValue ?? ''} onChange={handleTextFieldChange} />
+          <FormControl type="text" id="surname" placeholder="Surname" defaultValue={surnameValue ?? ''} onChange={handleTextFieldChange} />
+          <FormControl type="text" id="name" placeholder="Name" defaultValue={nameValue ?? ''} onChange={handleTextFieldChange} />
         </Form>
       </ModalBody>
       <ModalFooter>
@@ -84,7 +103,7 @@ const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolea
           Cancel
         </Button>
         <Button onClick={handleSubmit}>
-          {props.loading ? <Spinner animation="border" variant="light" /> : props.submitButtonTitle}
+          {loading ? <Spinner animation="border" variant="light" /> : submitButtonTitle}
         </Button>
       </ModalFooter>
     </Modal>
