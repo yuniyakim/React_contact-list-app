@@ -1,18 +1,16 @@
-import styled from 'styled-components';
-import Form from 'react-bootstrap/Form';
-import {StyledButton as Button} from "../../UI/Button.style";
-import Modal from 'react-bootstrap/Modal';
+import styled from 'styled-components'
+import Form from 'react-bootstrap/Form'
+import { StyledButton as Button } from '../../UI/Button.style'
+import Modal from 'react-bootstrap/Modal'
 
-export const StyledModal = styled(Modal)`
-`
+export const StyledModal = styled(Modal)``
 
 export const StyledModalHeader = styled(Modal.Header)`
   margin-left: 1rem;
   margin-right: 1rem;
 `
 
-export const StyledModalTitle = styled(Modal.Title)`
-`
+export const StyledModalTitle = styled(Modal.Title)``
 
 export const StyledModalBody = styled(Modal.Body)`
   display: flex;
@@ -20,8 +18,7 @@ export const StyledModalBody = styled(Modal.Body)`
   align-items: center;
 `
 
-export const StyledModalFooter = styled(Modal.Footer)`
-`
+export const StyledModalFooter = styled(Modal.Footer)``
 
 export const StyledForm = styled(Form)`
   font-family: 'Open Sans', sans-serif;

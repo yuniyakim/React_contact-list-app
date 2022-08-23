@@ -1,8 +1,8 @@
-import styled from 'styled-components';
-import ListGroup from 'react-bootstrap/ListGroup';
-import Spinner from 'react-bootstrap/Spinner';
-import {StyledButton as Button} from '../../UI/Button.style';
-import * as palette from "../../theme/palette";
+import styled from 'styled-components'
+import ListGroup from 'react-bootstrap/ListGroup'
+import Spinner from 'react-bootstrap/Spinner'
+import { StyledButton as Button } from '../../UI/Button.style'
+import * as palette from '../../theme/palette'
 
 export const StyledSpinnerContainer = styled.div`
   display: flex;
@@ -21,7 +21,6 @@ export const StyledContactsContainer = styled(ListGroup)`
   flex-direction: column;
   align-items: center;
   margin: 1rem 3rem;
-  
 `
 
 export const StyledContact = styled(ListGroup.Item)`

@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import Form from 'react-bootstrap/Form';
-import {StyledButton as Button} from "../../UI/Button.style";
-import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../../UI/Error.style";
+import styled from 'styled-components'
+import Form from 'react-bootstrap/Form'
+import { StyledButton as Button } from '../../UI/Button.style'
+import { StyledError as Error, StyledErrorHeading as ErrorHeading } from '../../UI/Error.style'
 
 export const StyledFormContainer = styled.div`
   display: flex;
@@ -39,8 +39,7 @@ export const StyledError = styled(Error)`
   margin: 0.5rem;
 `
 
-export const StyledErrorHeading = styled(ErrorHeading)`
-`
+export const StyledErrorHeading = styled(ErrorHeading)``
 
 export const StyledButton = styled(Button)`
   width: 100%;

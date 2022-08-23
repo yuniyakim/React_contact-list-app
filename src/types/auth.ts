@@ -1,13 +1,13 @@
 export interface User {
-  email: null | string;
-  password: null | string;
+  email: null | string
+  password: null | string
 }
 
 export interface AuthState {
-  userId: number | null;
-  token: string | null;
-  authLoading: boolean;
-  authError: null | string;
+  userId: number | null
+  token: string | null
+  authLoading: boolean
+  authError: null | string
 }
 
 export enum AuthActionTypes {
@@ -20,44 +20,44 @@ export enum AuthActionTypes {
 }
 
 interface LoginAction {
-  type: AuthActionTypes.LOGIN;
+  type: AuthActionTypes.LOGIN
 }
 
 interface LoginSuccessAction {
-  type: AuthActionTypes.LOGIN_SUCCESS;
-  payload: { userId: number, token: string };
+  type: AuthActionTypes.LOGIN_SUCCESS
+  payload: { userId: number; token: string }
 }
 
 interface LoginErrorAction {
-  type: AuthActionTypes.LOGIN_ERROR;
-  payload: string;
+  type: AuthActionTypes.LOGIN_ERROR
+  payload: string
 }
 
 interface LogoutAction {
-  type: AuthActionTypes.LOGOUT;
+  type: AuthActionTypes.LOGOUT
 }
 
 interface LogoutSuccessAction {
-  type: AuthActionTypes.LOGOUT_SUCCESS;
+  type: AuthActionTypes.LOGOUT_SUCCESS
 }
 
 interface LogoutErrorAction {
-  type: AuthActionTypes.LOGOUT_ERROR;
-  payload: string;
+  type: AuthActionTypes.LOGOUT_ERROR
+  payload: string
 }
 
 export type AuthAction =
-  LoginAction
+  | LoginAction
   | LoginSuccessAction
   | LoginErrorAction
   | LogoutAction
   | LogoutSuccessAction
-  | LogoutErrorAction;
+  | LogoutErrorAction
 
 export interface AuthResponse {
-  accessToken: string,
+  accessToken: string
   user: {
-    id: number,
+    id: number
     email: string
   }
 }

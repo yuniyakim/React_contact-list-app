@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react'
 import {
   StyledModal as Modal,
   StyledModalHeader as ModalHeader,
@@ -7,9 +7,9 @@ import {
   StyledModalFooter as ModalFooter,
   StyledForm as Form,
   StyledFormControl as FormControl,
-  StyledButton as Button
-} from "./ContactModal.style";
-import Spinner from 'react-bootstrap/Spinner';
+  StyledButton as Button,
+} from './ContactModal.style'
+import Spinner from 'react-bootstrap/Spinner'
 
 const initialState = {
   surname: '',
@@ -17,59 +17,61 @@ const initialState = {
 }
 
 interface ContactModalProps {
-  isVisible: boolean,
-  setVisible: (isVisible: boolean) => void,
-  title: string,
-  submitButtonTitle: string,
-  onSubmit: (surname: string, name: string, id?: number) => void,
-  id?: number,
-  surnameValue?: string,
-  nameValue?: string,
+  isVisible: boolean
+  setVisible: (isVisible: boolean) => void
+  title: string
+  submitButtonTitle: string
+  onSubmit: (surname: string, name: string, id?: number) => void
+  id?: number
+  surnameValue?: string
+  nameValue?: string
   loading: boolean
 }
 
 const ContactModal: React.FC<ContactModalProps> = ({
-                                                     isVisible,
-                                                     setVisible,
-                                                     title,
-                                                     submitButtonTitle,
-                                                     onSubmit,
-                                                     id,
-                                                     surnameValue = '',
-                                                     nameValue = '',
-                                                     loading
+  isVisible,
+  setVisible,
+  title,
+  submitButtonTitle,
+  onSubmit,
+  id,
+  surnameValue = '',
+  nameValue = '',
+  loading,
 }) => {
-  const [formValues, setFormValues] = useState(initialState);
+  const [formValues, setFormValues] = useState(initialState)
 
   useEffect(() => {
     setFormValues(() => {
-      return({
+      return {
         surname: surnameValue,
         name: nameValue,
-      })
-    });
+      }
+    })
     if (!loading) {
-      setVisible(false);
+      setVisible(false)
     }
-  }, [nameValue, surnameValue, loading]);
+  }, [nameValue, surnameValue, loading])
 
   const handleClose = () => {
-    setVisible(false);
-    setFormValues(initialState);
+    setVisible(false)
+    setFormValues(initialState)
   }
 
   const handleSubmit = (e: MouseEvent) => {
-    e.preventDefault();
-    onSubmit(formValues.surname, formValues.name, id);
-    setFormValues(initialState);
+    e.preventDefault()
+    onSubmit(formValues.surname, formValues.name, id)
+    setFormValues(initialState)
   }
 
-  const handleTextFieldChange = (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const { id, value } = event.target;
+  const handleTextFieldChange = (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    const { id, value } = event.target
     setFormValues({
       ...formValues,
-      [id]: value
-    });
+      [id]: value,
+    })
   }
 
   return (
@@ -79,20 +81,32 @@ const ContactModal: React.FC<ContactModalProps> = ({
       </ModalHeader>
       <ModalBody>
         <Form>
-          <FormControl type="text" id="surname" placeholder="Surname" defaultValue={surnameValue} onChange={handleTextFieldChange} />
-          <FormControl type="text" id="name" placeholder="Name" defaultValue={nameValue} onChange={handleTextFieldChange} />
+          <FormControl
+            type='text'
+            id='surname'
+            placeholder='Surname'
+            defaultValue={surnameValue}
+            onChange={handleTextFieldChange}
+          />
+          <FormControl
+            type='text'
+            id='name'
+            placeholder='Name'
+            defaultValue={nameValue}
+            onChange={handleTextFieldChange}
+          />
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button type="button" danger onClick={handleClose}>
+        <Button type='button' danger onClick={handleClose}>
           Cancel
         </Button>
-        <Button type="submit" onClick={handleSubmit}>
-          {loading ? <Spinner animation="border" variant="light" /> : submitButtonTitle}
+        <Button type='submit' onClick={handleSubmit}>
+          {loading ? <Spinner animation='border' variant='light' /> : submitButtonTitle}
         </Button>
       </ModalFooter>
     </Modal>
-  );
-};
+  )
+}
 
-export default ContactModal;
+export default ContactModal

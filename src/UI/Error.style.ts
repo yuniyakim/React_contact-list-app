@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import Alert from "react-bootstrap/Alert";
-import * as palette from "../theme/palette";
+import styled from 'styled-components'
+import Alert from 'react-bootstrap/Alert'
+import * as palette from '../theme/palette'
 
 export const StyledError = styled(Alert)`
   font-family: 'Open Sans', sans-serif;

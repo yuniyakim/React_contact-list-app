@@ -1,7 +1,7 @@
-import styled from 'styled-components';
-import {StyledButton as Button} from "../../UI/Button.style";
-import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../../UI/Error.style";
-import * as palette from '../../theme/palette';
+import styled from 'styled-components'
+import { StyledButton as Button } from '../../UI/Button.style'
+import { StyledError as Error, StyledErrorHeading as ErrorHeading } from '../../UI/Error.style'
+import * as palette from '../../theme/palette'
 
 export const StyledHeaderContainer = styled.div`
   font-family: 'Open Sans', sans-serif;
@@ -18,13 +18,12 @@ export const StyledTitle = styled.div`
   margin-left: 3rem;
 `
 
-export const StyledError = styled(Error)` 
+export const StyledError = styled(Error)`
   max-width: 60%;
   margin-top: auto;
 `
 
-export const StyledErrorHeading = styled(ErrorHeading)`
-`
+export const StyledErrorHeading = styled(ErrorHeading)``
 
 export const StyledButton = styled(Button)`
   margin-right: 3rem;

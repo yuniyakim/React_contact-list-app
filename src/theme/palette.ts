@@ -7,4 +7,4 @@ export const colors = {
   redHover: '#A00000',
   text: '#FFFFFF',
   background: '#F5F5F5',
-};
+}

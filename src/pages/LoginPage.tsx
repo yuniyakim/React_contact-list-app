@@ -1,29 +1,27 @@
-import React, {useEffect} from 'react';
-import Login from "../components/Login/Login";
-import {useAppActions, useAppSelector} from "../hooks";
-import {User} from "../types/auth";
-import {useNavigate} from "react-router-dom";
+import React, { useEffect } from 'react'
+import Login from '../components/Login/Login'
+import { useAppActions, useAppSelector } from '../hooks'
+import { User } from '../types/auth'
+import { useNavigate } from 'react-router-dom'
 
 const LoginPage = () => {
-  const {userId, token, authLoading, authError} = useAppSelector(state => state.auth);
-  const {login} = useAppActions();
-  let navigate = useNavigate();
+  const { userId, token, authLoading, authError } = useAppSelector((state) => state.auth)
+  const { login } = useAppActions()
+  const navigate = useNavigate()
 
   useEffect(() => {
     if (!authLoading) {
       if (userId && token) {
-        return navigate('/contacts');
+        return navigate('/contacts')
       }
     }
-  }, [authLoading]);
+  }, [authLoading])
 
   const handleSubmit = (formValues: User) => {
-    login(formValues);
+    login(formValues)
   }
 
-  return (
-    <Login onSubmit={handleSubmit} loading={authLoading} error={authError} />
-  );
-};
+  return <Login onSubmit={handleSubmit} loading={authLoading} error={authError} />
+}
 
-export default LoginPage;
+export default LoginPage

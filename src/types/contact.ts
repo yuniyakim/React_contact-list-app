@@ -1,15 +1,15 @@
 export interface Contact {
-  id: number;
-  surname: string;
-  name: string;
-  userId: number;
+  id: number
+  surname: string
+  name: string
+  userId: number
 }
 
 export interface ContactState {
-  contacts: Contact[];
-  filteredContacts: Contact[];
-  contactsLoading: boolean;
-  contactsError: null | string;
+  contacts: Contact[]
+  filteredContacts: Contact[]
+  contactsLoading: boolean
+  contactsError: null | string
 }
 
 export enum ContactActionTypes {
@@ -32,81 +32,81 @@ export enum ContactActionTypes {
 }
 
 interface FetchContactsAction {
-  type: ContactActionTypes.FETCH_CONTACTS;
+  type: ContactActionTypes.FETCH_CONTACTS
 }
 
 interface FetchContactsSuccessAction {
-  type: ContactActionTypes.FETCH_CONTACTS_SUCCESS;
-  payload: Contact[];
+  type: ContactActionTypes.FETCH_CONTACTS_SUCCESS
+  payload: Contact[]
 }
 
 interface FetchContactsErrorAction {
-  type: ContactActionTypes.FETCH_CONTACTS_ERROR;
-  payload: string;
+  type: ContactActionTypes.FETCH_CONTACTS_ERROR
+  payload: string
 }
 
 interface AddContactAction {
-  type: ContactActionTypes.ADD_CONTACT;
+  type: ContactActionTypes.ADD_CONTACT
 }
 
 interface AddContactSuccessAction {
-  type: ContactActionTypes.ADD_CONTACT_SUCCESS;
-  payload: Contact;
+  type: ContactActionTypes.ADD_CONTACT_SUCCESS
+  payload: Contact
 }
 
 interface AddContactErrorAction {
-  type: ContactActionTypes.ADD_CONTACT_ERROR;
-  payload: string;
+  type: ContactActionTypes.ADD_CONTACT_ERROR
+  payload: string
 }
 
 interface EditContactAction {
-  type: ContactActionTypes.EDIT_CONTACT;
+  type: ContactActionTypes.EDIT_CONTACT
 }
 
 interface EditContactSuccessAction {
-  type: ContactActionTypes.EDIT_CONTACT_SUCCESS;
-  payload: Contact;
+  type: ContactActionTypes.EDIT_CONTACT_SUCCESS
+  payload: Contact
 }
 
 interface EditContactErrorAction {
-  type: ContactActionTypes.EDIT_CONTACT_ERROR;
-  payload: string;
+  type: ContactActionTypes.EDIT_CONTACT_ERROR
+  payload: string
 }
 
 interface DeleteContactAction {
-  type: ContactActionTypes.DELETE_CONTACT;
+  type: ContactActionTypes.DELETE_CONTACT
 }
 
 interface DeleteContactSuccessAction {
-  type: ContactActionTypes.DELETE_CONTACT_SUCCESS;
-  payload: number;
+  type: ContactActionTypes.DELETE_CONTACT_SUCCESS
+  payload: number
 }
 
 interface DeleteContactErrorAction {
-  type: ContactActionTypes.DELETE_CONTACT_ERROR;
-  payload: string;
+  type: ContactActionTypes.DELETE_CONTACT_ERROR
+  payload: string
 }
 
 interface SearchContactAction {
-  type: ContactActionTypes.SEARCH_CONTACT;
+  type: ContactActionTypes.SEARCH_CONTACT
 }
 
 interface SearchContactSuccessAction {
-  type: ContactActionTypes.SEARCH_CONTACT_SUCCESS;
-  payload: string;
+  type: ContactActionTypes.SEARCH_CONTACT_SUCCESS
+  payload: string
 }
 
 interface SearchContactErrorAction {
-  type: ContactActionTypes.SEARCH_CONTACT_ERROR;
-  payload: string;
+  type: ContactActionTypes.SEARCH_CONTACT_ERROR
+  payload: string
 }
 
 interface ClearContactsAction {
-  type: ContactActionTypes.CLEAR_CONTACTS;
+  type: ContactActionTypes.CLEAR_CONTACTS
 }
 
 export type ContactAction =
-  FetchContactsAction
+  | FetchContactsAction
   | FetchContactsSuccessAction
   | FetchContactsErrorAction
   | AddContactAction
@@ -121,4 +121,4 @@ export type ContactAction =
   | SearchContactAction
   | SearchContactSuccessAction
   | SearchContactErrorAction
-  | ClearContactsAction;
+  | ClearContactsAction
