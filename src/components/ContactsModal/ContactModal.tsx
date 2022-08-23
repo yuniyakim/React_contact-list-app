@@ -34,7 +34,7 @@ const ContactModal: React.FC<ContactModalProps> = ({
                                                      title,
                                                      submitButtonTitle,
                                                      onSubmit,
-                                                     id = -1,
+                                                     id,
                                                      surnameValue = '',
                                                      nameValue = '',
                                                      loading
@@ -45,7 +45,7 @@ const ContactModal: React.FC<ContactModalProps> = ({
     setFormValues((prevState) => {
       return({
         ...prevState,
-        name: nameValue ?? '',
+        name: nameValue,
       })
     });
   }, [nameValue]);
@@ -54,7 +54,7 @@ const ContactModal: React.FC<ContactModalProps> = ({
     setFormValues((prevState) => {
       return({
         ...prevState,
-        surname: surnameValue ?? '',
+        surname: surnameValue,
       })
     });
   }, [surnameValue]);
@@ -70,7 +70,8 @@ const ContactModal: React.FC<ContactModalProps> = ({
     setFormValues(initialState);
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: MouseEvent) => {
+    e.preventDefault();
     if (id) {
       onSubmit(formValues.surname, formValues.name, id);
     } else {
@@ -94,15 +95,15 @@ const ContactModal: React.FC<ContactModalProps> = ({
       </ModalHeader>
       <ModalBody>
         <Form>
-          <FormControl type="text" id="surname" placeholder="Surname" defaultValue={surnameValue ?? ''} onChange={handleTextFieldChange} />
-          <FormControl type="text" id="name" placeholder="Name" defaultValue={nameValue ?? ''} onChange={handleTextFieldChange} />
+          <FormControl type="text" id="surname" placeholder="Surname" defaultValue={surnameValue} onChange={handleTextFieldChange} />
+          <FormControl type="text" id="name" placeholder="Name" defaultValue={nameValue} onChange={handleTextFieldChange} />
         </Form>
       </ModalBody>
       <ModalFooter>
-        <Button danger onClick={handleClose}>
+        <Button type="button" danger onClick={handleClose}>
           Cancel
         </Button>
-        <Button onClick={handleSubmit}>
+        <Button type="submit" onClick={handleSubmit}>
           {loading ? <Spinner animation="border" variant="light" /> : submitButtonTitle}
         </Button>
       </ModalFooter>

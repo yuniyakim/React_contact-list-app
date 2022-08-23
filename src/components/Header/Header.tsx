@@ -12,7 +12,7 @@ const Header = (props: {pageTitle: string, onLogout: () => void, loading: boolea
   const [show, setShow] = useState(props.error !== null);
 
   useEffect(() => {
-    if (props.error !== null) {
+    if (props.error) {
       setShow(true);
       setTimeout(() =>{
         setShow(false);
@@ -20,11 +20,19 @@ const Header = (props: {pageTitle: string, onLogout: () => void, loading: boolea
     }
   }, [props.error]);
 
+  const handleClose = () => {
+    setShow(false);
+  }
+
+  const handleLogout = () => {
+    props.onLogout()
+  }
+
   return (
     <HeaderContainer>
       <Title>{props.pageTitle}</Title>
-      <Error show={show} onClose={() => setShow(false)} dismissible><ErrorHeading>Error</ErrorHeading>{props.error}</Error>
-      <Button onClick={() => props.onLogout()}>
+      <Error show={show} onClose={handleClose} dismissible><ErrorHeading>Error</ErrorHeading>{props.error}</Error>
+      <Button onClick={handleLogout}>
         {props.loading ? <Spinner animation="border" variant="light" /> : 'Log out'}
       </Button>
     </HeaderContainer>

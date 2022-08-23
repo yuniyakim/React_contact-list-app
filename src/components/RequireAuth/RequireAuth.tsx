@@ -10,7 +10,7 @@ interface RequireAuthProps {
 export const RequireAuth: React.FC<RequireAuthProps> = ({ children }) => {
   const {userId, token} = useAppSelector(state => state.auth);
 
-  if (userId === null || token === null) {
+  if (!userId || !token) {
     return <Navigate to={Routes.LOGIN} replace/>;
   } else {
     return children;

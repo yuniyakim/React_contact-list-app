@@ -27,6 +27,11 @@ const Login = (props: {onSubmit: (values: User) => void, loading: boolean, error
     });
   };
 
+  const handleSubmit = (e: MouseEvent) => {
+    e.preventDefault();
+    props.onSubmit(formValues);
+  }
+
   return (
     <FormContainer>
       <Form>
@@ -35,8 +40,8 @@ const Login = (props: {onSubmit: (values: User) => void, loading: boolean, error
         </Title>
         <FormControl type="email" placeholder="Email" onChange={handleTextFieldChange} />
         <FormControl type="password" placeholder="Password" onChange={handleTextFieldChange} />
-        {props.error !== null ? <Error><ErrorHeading>Error</ErrorHeading>{props.error}</Error> : <></>}
-        <Button onClick={() => props.onSubmit(formValues)}>
+        {props.error ? <Error><ErrorHeading>Error</ErrorHeading>{props.error}</Error> : <></>}
+        <Button type="submit" onClick={handleSubmit}>
           {props.loading ? <Spinner animation="border" variant="light" /> : 'Sign in'}
         </Button>
       </Form>

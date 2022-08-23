@@ -42,7 +42,7 @@ const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, s
     props.onDeleteContact(id);
   }
 
-  if (props.loading && props.contacts.length === 0) {
+  if (props.loading && !props.contacts.length) {
     return <SpinnerContainer><DarkSpinner animation="border" /></SpinnerContainer>
   }
 
