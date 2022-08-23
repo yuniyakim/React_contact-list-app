@@ -42,16 +42,28 @@ const ContactModal: React.FC<ContactModalProps> = ({
   const [formValues, setFormValues] = useState(initialState)
 
   useEffect(() => {
-    setFormValues(() => {
+    setFormValues((prevState) => {
       return {
+        ...prevState,
         surname: surnameValue,
+      }
+    })
+  }, [surnameValue])
+
+  useEffect(() => {
+    setFormValues((prevState) => {
+      return {
+        ...prevState,
         name: nameValue,
       }
     })
+  }, [nameValue])
+
+  useEffect(() => {
     if (!loading) {
       setVisible(false)
     }
-  }, [nameValue, surnameValue, loading])
+  }, [loading])
 
   const handleClose = () => {
     setVisible(false)
