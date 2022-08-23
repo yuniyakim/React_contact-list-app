@@ -1,7 +1,7 @@
 import {Contact, ContactAction, ContactActionTypes} from "../../types/contact";
 import {Dispatch} from "@reduxjs/toolkit";
 import axios, {AxiosError} from "axios";
-import {url} from "./url";
+const url = process.env.REACT_APP_API_UPL;
 
 export const fetchContacts = (userId: number | null, token: string | null) => {
   return async (dispatch: Dispatch<ContactAction>) => {

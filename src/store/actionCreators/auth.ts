@@ -1,7 +1,7 @@
 import {AuthAction, AuthActionTypes, AuthResponse, User} from "../../types/auth";
 import {Dispatch} from "@reduxjs/toolkit";
 import axios, {AxiosError} from "axios";
-import {url} from "./url";
+const url = process.env.REACT_APP_API_UPL;
 
 export const login = (formValues: User) => {
   return async (dispatch: Dispatch<AuthAction>) => {
