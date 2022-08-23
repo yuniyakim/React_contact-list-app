@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
-import {StyledButton as Button} from "../UI/Button.style";
-import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../UI/Error.style";
+import {StyledButton as Button} from "../../UI/Button.style";
+import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../../UI/Error.style";
 
 export const StyledFormContainer = styled.div`
   display: flex;

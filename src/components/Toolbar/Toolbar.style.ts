@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
-import {StyledButton as Button} from "../UI/Button.style";
-import * as palette from '../theme/palette';
+import {StyledButton as Button} from "../../UI/Button.style";
+import * as palette from '../../theme/palette';
 
 export const StyledToolbarContainer = styled.div`
   display: flex;

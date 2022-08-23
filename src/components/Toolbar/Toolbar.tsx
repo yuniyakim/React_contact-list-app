@@ -5,7 +5,7 @@ import {
   StyledSearchFormControl as SearchFormControl,
   StyledButton as Button
 } from './Toolbar.style';
-import ContactModal from "./ContactModal";
+import ContactModal from "../ContactsModal/ContactModal";
 
 const Toolbar = (props: {onAddContact: (surname: string, name: string) => void, onSearch: (searchValue: string) => void, loading: boolean}) => {
   const [isVisible, setVisible] = useState(false);

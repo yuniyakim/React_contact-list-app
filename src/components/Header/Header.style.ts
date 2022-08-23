@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import {StyledButton as Button} from "../UI/Button.style";
-import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../UI/Error.style";
-import * as palette from '../theme/palette';
+import {StyledButton as Button} from "../../UI/Button.style";
+import {StyledError as Error, StyledErrorHeading as ErrorHeading} from "../../UI/Error.style";
+import * as palette from '../../theme/palette';
 
 export const StyledHeaderContainer = styled.div`
   font-family: 'Open Sans', sans-serif;

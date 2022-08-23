@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import Header from "../components/Header";
-import Toolbar from "../components/Toolbar";
-import Contacts from "../components/Contacts";
+import Header from "../components/Header/Header";
+import Toolbar from "../components/Toolbar/Toolbar";
+import Contacts from "../components/Contacts/Contacts";
 import {useAppActions, useAppSelector} from "../hooks";
 
 const ContactsPage = () => {

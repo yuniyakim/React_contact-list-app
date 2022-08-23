@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import ListGroup from 'react-bootstrap/ListGroup';
 import Spinner from 'react-bootstrap/Spinner';
-import {StyledButton as Button} from '../UI/Button.style';
-import * as palette from "../theme/palette";
+import {StyledButton as Button} from '../../UI/Button.style';
+import * as palette from "../../theme/palette";
 
 export const StyledSpinnerContainer = styled.div`
   display: flex;

@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Form from 'react-bootstrap/Form';
-import {StyledButton as Button} from "../UI/Button.style";
+import {StyledButton as Button} from "../../UI/Button.style";
 import Modal from 'react-bootstrap/Modal';
 
 export const StyledModal = styled(Modal)`

@@ -10,8 +10,8 @@ import {
   StyledContactDeleteButton as ContactDeleteButton
 } from './Contacts.style';
 import 'bootstrap-icons/font/bootstrap-icons.css';
-import {Contact as ContactType} from '../types/contact';
-import ContactModal from "./ContactModal";
+import {Contact as ContactType} from '../../types/contact';
+import ContactModal from "../ContactsModal/ContactModal";
 import Spinner from "react-bootstrap/Spinner";
 
 const Contacts = (props: {contacts: ContactType[], onEditContact: (id: number, surname: string, name: string) => void,

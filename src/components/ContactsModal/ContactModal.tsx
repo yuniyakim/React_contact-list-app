@@ -16,6 +16,8 @@ const initialState = {
   name: '',
 }
 
+
+
 const ContactModal = (props: {isVisible: boolean, setVisible: (isVisible: boolean) => void, title: string, submitButtonTitle: string,
     onSubmit: (surname: string, name: string, id?: number) => void, id?: number, surnameValue?: string, nameValue?: string, loading: boolean}) => {
   const [formValues, setFormValues] = useState(initialState);

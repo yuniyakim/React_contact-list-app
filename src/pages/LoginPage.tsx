@@ -1,5 +1,5 @@
 import React, {useEffect} from 'react';
-import Login from "../components/Login";
+import Login from "../components/Login/Login";
 import {useAppActions, useAppSelector} from "../hooks";
 import {User} from "../types/auth";
 import {useNavigate} from "react-router-dom";

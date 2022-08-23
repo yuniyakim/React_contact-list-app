@@ -8,7 +8,7 @@ import {
   StyledErrorHeading as ErrorHeading,
   StyledButton as Button
 } from './Login.style';
-import {User} from "../types/auth";
+import {User} from "../../types/auth";
 import Spinner from 'react-bootstrap/Spinner';
 
 const initialState: User = {
